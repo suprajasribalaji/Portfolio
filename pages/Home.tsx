@@ -6,19 +6,22 @@ import React, { useState } from "react";
 import { RxDividerVertical } from "react-icons/rx";
 import styled from "styled-components";
 import bgImage from "../public/images/bg-image.jpg";
+import About from "./About";
+import Skill from "./Skill";
+import Project from "./Project";
+import Resume from "./Resume";
+import Contact from "./Contact";
+import { 
+  backgroundColor, 
+  text, 
+  linearGradient 
+} from "@/theme/color";
 
 const Home: NextPage = () => {
   const [currentPage, setCurrentPage] = useState<string>("");
 
   const handleOnClick = (actualPage: string): void => {
     setCurrentPage(actualPage);
-  };
-
-  const renderComponentBasedOnCurrentPage = (): JSX.Element | null => {
-    switch (currentPage) {
-      default:
-        return null;
-    }
   };
 
   return (
@@ -38,9 +41,6 @@ const Home: NextPage = () => {
             <NavigationButton type="link" onClick={() => handleOnClick("Skill")}>
               Skill
             </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Achievement")}>
-              Achievement
-            </NavigationButton>
             <NavigationButton type="link" onClick={() => handleOnClick("Contact")}>
               Contact
             </NavigationButton>
@@ -56,9 +56,21 @@ const Home: NextPage = () => {
           </Content>
         </BackgroundImage>
       </NavigationAndContent>
-      <ComponentRenderByCurrentPageStyledDiv>
-        {renderComponentBasedOnCurrentPage()}
-      </ComponentRenderByCurrentPageStyledDiv>
+      <AboutComponent>
+        <About />
+      </AboutComponent>
+      <SkillComponent>
+        <Skill />
+      </SkillComponent>
+      <ProjectComponent>
+        <Project />
+      </ProjectComponent>
+      <ResumeComponent>
+        <Resume />
+      </ResumeComponent>
+      <ContactComponent>
+        <Contact />
+      </ContactComponent>
     </HomeComponent>
   );
 };
@@ -71,7 +83,7 @@ const HomeComponent = styled.div`
 `;
 
 const NavigationAndContent = styled.div`
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: ${backgroundColor.home};
   height: 100vh;
   width: 100%;
 `;
@@ -81,32 +93,32 @@ const BackgroundImage = styled.div`
   height: 88vh;
   left: 0px;
   top: 0px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-    url(${bgImage.src});
+  background: linear-gradient(0deg, ${linearGradient.start}, ${linearGradient.end}),
+  url(${bgImage.src});
   background-size: cover;
   border-radius: 0px 0px 100px 0px;
 `;
 
 const Navigation = styled.nav`
-  padding-left: 15%;
-  padding-top: 1.2%;
+  padding-left: 23%;
+  padding-top: 1.6%;
 `;
 
 const NavigationButton = styled(Button)`
   &&& {
-    color: #fff;
+    color: ${text.primaryWhite};
     margin-right: 2.5rem;
-    font-size: 15px;
+    font-size: 17px;
     font-family: "Montserrat", sans-serif;
   }
   &&&:hover,
   &&&:focus {
-    color: rgba(255, 255, 255, 0.6);
+    color: ${text.secondaryWhite};
   }
 `;
 
 const Content = styled.div`
-  color: #fff;
+  color: ${text.primaryWhite};
   position: absolute;
   display: flex;
   flex: 1;
@@ -130,11 +142,37 @@ const Name = styled.div`
 `;
 
 const Bio = styled.div`
-  color: rgba(255, 255, 255, 0.7);
+  color: ${text.secondaryWhite};
   font-size: 110%;
   margin-top: 6%;
 `;
 
-const ComponentRenderByCurrentPageStyledDiv = styled.div`
-  text-align: center;
+const BaseStyledForAllComponent = styled.div`
+  height: 100vh;
+  width: 100%;
+  position absolute;
+`;
+
+const ColoredBasedOnProps = styled(BaseStyledForAllComponent)`
+  background-color: ${props => props.color};
+`;
+
+const AboutComponent = styled(ColoredBasedOnProps)`
+  background-color: beige;
+`;
+
+const SkillComponent = styled(ColoredBasedOnProps)`
+  background-color: gray;
+`;
+
+const ProjectComponent = styled(ColoredBasedOnProps)`
+  background-color: lightBlue;
+`;
+
+const ResumeComponent = styled(ColoredBasedOnProps)`
+  background-color: white;
+`;
+
+const ContactComponent = styled(ColoredBasedOnProps)`
+  background-color: lavender;
 `;
