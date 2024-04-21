@@ -11,6 +11,11 @@ import Skill from "./Skill";
 import Project from "./Project";
 import Resume from "./Resume";
 import Contact from "./Contact";
+import { 
+  backgroundColor, 
+  text, 
+  linearGradient 
+} from "@/theme/color";
 
 const Home: NextPage = () => {
   const [currentPage, setCurrentPage] = useState<string>("");
@@ -78,7 +83,7 @@ const HomeComponent = styled.div`
 `;
 
 const NavigationAndContent = styled.div`
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: ${backgroundColor.home};
   height: 100vh;
   width: 100%;
 `;
@@ -88,8 +93,8 @@ const BackgroundImage = styled.div`
   height: 88vh;
   left: 0px;
   top: 0px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-    url(${bgImage.src});
+  background: linear-gradient(0deg, ${linearGradient.start}, ${linearGradient.end}),
+  url(${bgImage.src});
   background-size: cover;
   border-radius: 0px 0px 100px 0px;
 `;
@@ -101,19 +106,19 @@ const Navigation = styled.nav`
 
 const NavigationButton = styled(Button)`
   &&& {
-    color: #fff;
+    color: ${text.primaryWhite};
     margin-right: 2.5rem;
     font-size: 17px;
     font-family: "Montserrat", sans-serif;
   }
   &&&:hover,
   &&&:focus {
-    color: rgba(255, 255, 255, 0.6);
+    color: ${text.secondaryWhite};
   }
 `;
 
 const Content = styled.div`
-  color: #fff;
+  color: ${text.primaryWhite};
   position: absolute;
   display: flex;
   flex: 1;
@@ -137,7 +142,7 @@ const Name = styled.div`
 `;
 
 const Bio = styled.div`
-  color: rgba(255, 255, 255, 0.7);
+  color: ${text.secondaryWhite};
   font-size: 110%;
   margin-top: 6%;
 `;
