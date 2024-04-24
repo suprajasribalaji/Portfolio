@@ -1,8 +1,8 @@
 'use client'
 
-import { ButtonColor, linearGradient, text } from "@/theme/color";
+import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
-import { useState, useEffect } from "react"; // Import useState and useEffect
+import { useState } from "react";
 import styled from "styled-components";
 import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
@@ -11,13 +11,7 @@ import type { ConfigProviderProps } from 'antd';
 type SizeType = ConfigProviderProps['componentSize'];
 
 const Home: NextPage = () => {
-  const [size, setSize] = useState<SizeType>('large'); // default is 'large'
-
-  // Ensure this component is only rendered on the client side
-  useEffect(() => {
-    // Set the initial size state
-    setSize('large');
-  }, []);
+  const [size, setSize] = useState<SizeType>('large');
 
   return (
     <HomePage>
@@ -50,11 +44,11 @@ export default Home;
 const HomePage = styled.div`
   width: 100%;
   height: 100vh;
-  color: ${text.primaryWhite};
+  color: ${TextColor.primaryWhite};
 `;
 
 const BackgroundImage = styled(HomePage)`
-  background: linear-gradient(0deg, ${linearGradient.start}, ${linearGradient.end}),
+  background: linear-gradient(0deg, ${LinearGradientColor.start}, ${LinearGradientColor.end}),
   url(${HomeBgImg.src});
   background-size: cover;
 `;
@@ -80,7 +74,7 @@ const Title = styled.div`
 
 const SubTitle = styled.div`
   font-weight: 250;
-  color: ${text.secondaryWhite};
+  color: ${TextColor.secondaryWhite};
   font-size: 180%;
   margin-top: 4%;
 `;
@@ -94,11 +88,11 @@ const ActionButtons = styled.div`
 const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
-  color: ${text.primaryWhite};
+  color: ${TextColor.primaryWhite};
   &&&:hover,
   &&&:focus {
     background-color: ${ButtonColor.backgroundColor}; 
-    color: ${text.lightWhite};
+    color: ${TextColor.lightWhite};
   }
 `;
 
