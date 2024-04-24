@@ -7,6 +7,7 @@ import styled from "styled-components";
 import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
 import type { ConfigProviderProps } from 'antd';
+import About from "./About";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
@@ -35,6 +36,9 @@ const Home: NextPage = () => {
           </ActionButtons>
         </Content>
       </BackgroundImage>
+      <AboutPage>
+        <About />
+      </AboutPage>
     </HomePage>
   )
 }
@@ -42,24 +46,26 @@ const Home: NextPage = () => {
 export default Home;
 
 const HomePage = styled.div`
-  width: 100%;
-  height: 100vh;
-  color: ${TextColor.primaryWhite};
+  margin: 0;
+  padding: 0;
 `;
 
-const BackgroundImage = styled(HomePage)`
+const BackgroundImage = styled.div`
   background: linear-gradient(0deg, ${LinearGradientColor.start}, ${LinearGradientColor.end}),
   url(${HomeBgImg.src});
   background-size: cover;
+  width: 100%;
+  height: 100vh;
 `;
 
-const Content = styled(HomePage)`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-family: "Hanken Grotesk", sans-serif;
+  color: ${TextColor.primaryWhite};
 `;
 
 const TitleAndSubtitle = styled.div`
@@ -69,7 +75,7 @@ const TitleAndSubtitle = styled.div`
 const Title = styled.div`
   font-weight: 600; 
   font-size: 400%;
-  margin-top: 35%;
+  margin-top: 63%;
 `;
 
 const SubTitle = styled.div`
@@ -107,3 +113,5 @@ const ReachOutButton = styled.div`
 const TextInButton = styled.span`
   font-size: 80%;
 `;
+
+const AboutPage = styled(HomePage)``;

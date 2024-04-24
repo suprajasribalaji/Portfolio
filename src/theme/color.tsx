@@ -11,4 +11,8 @@ export const TextColor = {
 
 export const ButtonColor = {
     backgroundColor: '#2e2e2e',
+};
+
+export const BackgroundColor = {
+    aboutBg: '#f6f6f6',
 }
