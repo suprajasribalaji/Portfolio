@@ -1,178 +1,115 @@
-'use client';
+'use client'
 
+import { ButtonColor, linearGradient, text } from "@/theme/color";
 import { NextPage } from "next";
-import { Button } from "antd";
-import React, { useState } from "react";
-import { RxDividerVertical } from "react-icons/rx";
+import { useState, useEffect } from "react"; // Import useState and useEffect
 import styled from "styled-components";
-import bgImage from "../public/images/bg-image.jpg";
-import About from "./About";
-import Skill from "./Skill";
-import Project from "./Project";
-import Resume from "./Resume";
-import Contact from "./Contact";
-import { 
-  backgroundColor, 
-  text, 
-  linearGradient 
-} from "@/theme/color";
+import HomeBgImg from "../public/images/home-bg-img.jpeg";
+import { Button } from "antd";
+import type { ConfigProviderProps } from 'antd';
+
+type SizeType = ConfigProviderProps['componentSize'];
 
 const Home: NextPage = () => {
-  const [currentPage, setCurrentPage] = useState<string>("");
+  const [size, setSize] = useState<SizeType>('large'); // default is 'large'
 
-  const handleOnClick = (actualPage: string): void => {
-    setCurrentPage(actualPage);
-  };
+  // Ensure this component is only rendered on the client side
+  useEffect(() => {
+    // Set the initial size state
+    setSize('large');
+  }, []);
 
   return (
-    <HomeComponent>
-      <NavigationAndContent>
-        <BackgroundImage>
-          <Navigation>
-            <NavigationButton type="link" onClick={() => handleOnClick("About")}>
-              About
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Project")}>
-              Project
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Resume")}>
-              Resume
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Skill")}>
-              Skill
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Contact")}>
-              Contact
-            </NavigationButton>
-          </Navigation>
-          <Content>
-            <ContentIcon>
-              <RxDividerVertical/>
-            </ContentIcon>
-            <Introduction>
-              <Name>SUPRAJA SRI R B</Name>
-              <Bio>Enthusiastic developer</Bio>
-            </Introduction>
-          </Content>
-        </BackgroundImage>
-      </NavigationAndContent>
-      <AboutComponent>
-        <About />
-      </AboutComponent>
-      <SkillComponent>
-        <Skill />
-      </SkillComponent>
-      <ProjectComponent>
-        <Project />
-      </ProjectComponent>
-      <ResumeComponent>
-        <Resume />
-      </ResumeComponent>
-      <ContactComponent>
-        <Contact />
-      </ContactComponent>
-    </HomeComponent>
-  );
-};
+    <HomePage>
+      <BackgroundImage>
+        <Content>
+          <TitleAndSubtitle>
+            <Title>
+              SUPRAJA SRI R B
+            </Title>
+            <SubTitle>
+              Enthusiastic Developer
+            </SubTitle>
+          </TitleAndSubtitle>
+          <ActionButtons>
+            <KnowMoreButton>
+              <StyledButton type="link" shape="round" size={size}><TextInButton>KNOW MORE</TextInButton></StyledButton>
+            </KnowMoreButton>
+            <ReachOutButton>
+              <StyledButton type="link" shape="round" size={size}><TextInButton>REACH OUT</TextInButton></StyledButton>
+            </ReachOutButton>
+          </ActionButtons>
+        </Content>
+      </BackgroundImage>
+    </HomePage>
+  )
+}
 
 export default Home;
 
-const HomeComponent = styled.div`
-    margin: 0;
-    padding: 0;
-`;
-
-const NavigationAndContent = styled.div`
-  background-color: ${backgroundColor.home};
-  height: 100vh;
+const HomePage = styled.div`
   width: 100%;
+  height: 100vh;
+  color: ${text.primaryWhite};
 `;
 
-const BackgroundImage = styled.div`
-  width: 96%;
-  height: 88vh;
-  left: 0px;
-  top: 0px;
+const BackgroundImage = styled(HomePage)`
   background: linear-gradient(0deg, ${linearGradient.start}, ${linearGradient.end}),
-  url(${bgImage.src});
+  url(${HomeBgImg.src});
   background-size: cover;
-  border-radius: 0px 0px 100px 0px;
 `;
 
-const Navigation = styled.nav`
-  padding-left: 23%;
-  padding-top: 1.6%;
+const Content = styled(HomePage)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Hanken Grotesk", sans-serif;
 `;
 
-const NavigationButton = styled(Button)`
-  &&& {
-    color: ${text.primaryWhite};
-    margin-right: 2.5rem;
-    font-size: 17px;
-    font-family: "Montserrat", sans-serif;
-  }
+const TitleAndSubtitle = styled.div`
+  margin-bottom: 3%;
+`;
+
+const Title = styled.div`
+  font-weight: 600; 
+  font-size: 400%;
+  margin-top: 35%;
+`;
+
+const SubTitle = styled.div`
+  font-weight: 250;
+  color: ${text.secondaryWhite};
+  font-size: 180%;
+  margin-top: 4%;
+`;
+
+const ActionButtons = styled.div`
+  margin-top: 2%;
+  display: flex;
+  margin-right: 3%;
+`;
+
+const StyledButton = styled(Button)`
+  background-color: ${ButtonColor.backgroundColor};
+  border: none;
+  color: ${text.primaryWhite};
   &&&:hover,
   &&&:focus {
-    color: ${text.secondaryWhite};
+    background-color: ${ButtonColor.backgroundColor}; 
+    color: ${text.lightWhite};
   }
 `;
 
-const Content = styled.div`
-  color: ${text.primaryWhite};
-  position: absolute;
-  display: flex;
-  flex: 1;
-  margin-top: 24%;
-  margin-left: 2%;
+const KnowMoreButton = styled.div`
+  margin-right: 5%;
 `;
 
-const ContentIcon = styled.div`
-  margin-top: 22%;
-  svg {
-    font-size: 460%;
-  }
+const ReachOutButton = styled.div`
+  margin-left: 5%;
 `;
 
-const Introduction = styled.div`
-  margin-top: 21%;
-`;
-
-const Name = styled.div`
-  font-size: 190%;
-`;
-
-const Bio = styled.div`
-  color: ${text.secondaryWhite};
-  font-size: 110%;
-  margin-top: 6%;
-`;
-
-const BaseStyledForAllComponent = styled.div`
-  height: 100vh;
-  width: 100%;
-  position absolute;
-`;
-
-const ColoredBasedOnProps = styled(BaseStyledForAllComponent)`
-  background-color: ${props => props.color};
-`;
-
-const AboutComponent = styled(ColoredBasedOnProps)`
-  background-color: beige;
-`;
-
-const SkillComponent = styled(ColoredBasedOnProps)`
-  background-color: gray;
-`;
-
-const ProjectComponent = styled(ColoredBasedOnProps)`
-  background-color: lightBlue;
-`;
-
-const ResumeComponent = styled(ColoredBasedOnProps)`
-  background-color: white;
-`;
-
-const ContactComponent = styled(ColoredBasedOnProps)`
-  background-color: lavender;
+const TextInButton = styled.span`
+  font-size: 80%;
 `;
