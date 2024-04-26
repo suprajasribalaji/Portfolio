@@ -112,8 +112,8 @@ const ExperienceAndEducationContent = styled.div`
 
 const Title = styled.div`
     font-family: "Fira Sans", sans-serif;
-    font-size: 270%;
-    font-weight: 900;
+    font-weight: bold;
+    font-size: 370%;
     margin-top: 4%;
     margin-right: 10%;
 `;

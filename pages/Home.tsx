@@ -9,6 +9,7 @@ import { Button } from "antd";
 import type { ConfigProviderProps } from 'antd';
 import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
+import SkillsAndProficiency from "./SkillsAndProficiency";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
@@ -43,6 +44,9 @@ const Home: NextPage = () => {
       <ExperienceAndEducationPage>
         <ExperienceAndEducation />
       </ExperienceAndEducationPage>
+      <SkillsAndProficiencyPage>
+        <SkillsAndProficiency />
+      </SkillsAndProficiencyPage>
     </HomePage>
   )
 }
@@ -121,3 +125,5 @@ const TextInButton = styled.span`
 const AboutPage = styled(HomePage)``;
 
 const ExperienceAndEducationPage = styled(HomePage)``;
+
+const SkillsAndProficiencyPage = styled(HomePage)``;

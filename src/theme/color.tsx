@@ -7,6 +7,7 @@ export const TextColor = {
     primaryWhite: '#fff',
     secondaryWhite: '#f4f4f4',
     lightWhite: '#FFFFFF66',
+    SemiLightWhite: '#FFFFFFD9',
 };
 
 export const ButtonColor = {
