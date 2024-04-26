@@ -39,7 +39,7 @@ const About: NextPage = () => {
     )
 }
 
-export default About
+export default About;
 
 const AboutPage = styled.div`
     height: 100vh;
@@ -53,6 +53,8 @@ const AboutPage = styled.div`
 
 const AboutContent = styled.div`
     margin-left: 13%;
+    margin-bottom: 2%;
+    line-height: 200%;
 `;
 
 const Title = styled.div`

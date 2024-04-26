@@ -1,6 +1,6 @@
 export const LinearGradientColor = {
-    start: '#343434B3',
-    end: '#343434B3',
+    homeLG: '#343434B3',
+    expeduLG: '#535353CC',
 };
 
 export const TextColor = {

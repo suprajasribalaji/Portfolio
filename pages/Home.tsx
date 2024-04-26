@@ -8,6 +8,7 @@ import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
 import type { ConfigProviderProps } from 'antd';
 import About from "./About";
+import ExperienceAndEducation from "./ExperienceAndEducation";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
@@ -39,6 +40,9 @@ const Home: NextPage = () => {
       <AboutPage>
         <About />
       </AboutPage>
+      <ExperienceAndEducationPage>
+        <ExperienceAndEducation />
+      </ExperienceAndEducationPage>
     </HomePage>
   )
 }
@@ -51,7 +55,7 @@ const HomePage = styled.div`
 `;
 
 const BackgroundImage = styled.div`
-  background: linear-gradient(0deg, ${LinearGradientColor.start}, ${LinearGradientColor.end}),
+  background: linear-gradient(0deg, ${LinearGradientColor.homeLG}, ${LinearGradientColor.homeLG}),
   url(${HomeBgImg.src});
   background-size: cover;
   width: 100%;
@@ -115,3 +119,5 @@ const TextInButton = styled.span`
 `;
 
 const AboutPage = styled(HomePage)``;
+
+const ExperienceAndEducationPage = styled(HomePage)``;
