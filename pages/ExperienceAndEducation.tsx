@@ -108,7 +108,6 @@ const ExperienceAndEducationContent = styled.div`
     display: flex;
     padding-top: 6%;
     margin-left: 8.5%;
-    margin-right: 8.5%;
 `;
 
 const Title = styled.div`
@@ -122,7 +121,6 @@ const Title = styled.div`
 const Content = styled.div`
     margin-top: 2%;
     margin-left: 10%;
-    margin-right: -13.5%;
 `;
 
 const StyledDivForTwoInnerDiv = styled.div`
@@ -161,7 +159,7 @@ const InternshipAt = styled.div`
 
 const About = styled.div`
     padding-top: 5%;
-    line-height: 148%;
+    line-height: 154%;
 `;
 
 const UGEducation = styled(StyledDivForTwoInnerDiv)`
@@ -180,7 +178,7 @@ const UGBranch = styled(InternshipDesignation)``;
 
 const AboutUG= styled.div`
     padding-top: 4%;
-    line-height: 152%;
+    line-height: 154%;
 `;
 
 const HSCEducation = styled(StyledDivForTwoInnerDiv)`
