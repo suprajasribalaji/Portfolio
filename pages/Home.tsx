@@ -92,7 +92,7 @@ const Title = styled.div`
 
 const SubTitle = styled.div`
   font-weight: 250;
-  color: ${TextColor.secondaryWhite};
+  color: ${TextColor.tertiaryWhite};
   font-size: 180%;
   margin-top: 4%;
 `;
