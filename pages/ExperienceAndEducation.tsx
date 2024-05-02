@@ -131,7 +131,7 @@ const InternshipEndYear = styled.div`
     font-family: "Public Sans", sans-serif;
     font-size: 100%;
     font-weight: 800;
-    font-size: 114%;
+    font-size: 96%;
 `;
 
 const Internship = styled.div`
@@ -146,11 +146,11 @@ const InternshipExperience = styled(StyledDivForTwoInnerDiv)`
 
 const InternshipDesignation = styled.div`
     font-weight: 700;
-    font-size: 114%;
+    font-size: 96%;
 `;
 
 const AboutInternship = styled.div`
-    font-size: 100%;
+    font-size: 84%;
 `;
 
 const InternshipAt = styled.div`
@@ -179,6 +179,7 @@ const UGBranch = styled(InternshipDesignation)``;
 const AboutUG= styled.div`
     padding-top: 4%;
     line-height: 154%;
+    font-size: 84%;
 `;
 
 const HSCEducation = styled(StyledDivForTwoInnerDiv)`
@@ -199,7 +200,7 @@ const ActionButton = styled.div`
     flex-direction: column;
     align-items: flex-end;
     margin-right: 7%;
-    margin-top: 3%;
+    margin-top: 5%;
 `;
 
 const NextPageButton = styled.div`

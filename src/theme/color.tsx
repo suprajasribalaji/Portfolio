@@ -16,4 +16,5 @@ export const ButtonColor = {
 
 export const BackgroundColor = {
     aboutBg: '#f6f6f6',
+    sampleWorkBg: '#343434',
 }

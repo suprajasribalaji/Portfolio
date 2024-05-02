@@ -10,6 +10,7 @@ import type { ConfigProviderProps } from 'antd';
 import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
+import SampleWork from "./SampleWork";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
@@ -47,6 +48,9 @@ const Home: NextPage = () => {
       <SkillsAndProficiencyPage>
         <SkillsAndProficiency />
       </SkillsAndProficiencyPage>
+      <SampleWorkPage>
+        <SampleWork/>
+      </SampleWorkPage>
     </HomePage>
   )
 }
@@ -127,3 +131,5 @@ const AboutPage = styled(HomePage)``;
 const ExperienceAndEducationPage = styled(HomePage)``;
 
 const SkillsAndProficiencyPage = styled(HomePage)``;
+
+const SampleWorkPage = styled(HomePage)``;
