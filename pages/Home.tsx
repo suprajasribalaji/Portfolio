@@ -83,7 +83,7 @@ const TitleAndSubtitle = styled.div`
 const Title = styled.div`
   font-weight: 600; 
   font-size: 400%;
-  margin-top: 63%;
+  margin-top: 56%;
 `;
 
 const SubTitle = styled.div`
