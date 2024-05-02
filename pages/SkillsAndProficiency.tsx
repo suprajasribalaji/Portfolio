@@ -100,7 +100,7 @@ const SkillsAndProficiencyContent = styled.div`
 `;
 
 const Title = styled.div`
-    margin-top: 6.5%;
+    margin-top: 6%;
     margin-left: 8.5%;
     font-family: "Fira Sans", sans-serif;
     font-weight: bold;
@@ -119,7 +119,7 @@ const TechnicakSkillsTitle = styled.div`
     font-family: "PT Sans Caption", sans-serif;
     font-weight: bold;
     font-style: normal;
-    font-size: 120%;
+    font-size: 115%;
 `;
 
 const TechnicalSkills = styled.div`
@@ -132,6 +132,7 @@ const TechnicalSkills = styled.div`
 
 const Skills = styled.div`
     margin-top: 8%;
+    font-size: 88%;
 `;
 
 const ToolsAndProficiency = styled.div`
@@ -143,6 +144,7 @@ const ToolsTitle = styled(TechnicakSkillsTitle)``;
 
 const Tools = styled.div`
     margin-top: 28%;
+    font-size: 88%;
 `;
 
 const Tool = styled.div`
