@@ -2,22 +2,17 @@
 
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
-import type { ConfigProviderProps } from 'antd';
 import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
 import ReachOut from "./ReachOut";
 
-type SizeType = ConfigProviderProps['componentSize'];
-
 const Home: NextPage = () => {
-  const [size, setSize] = useState<SizeType>('large');
-
   const aboutPageRef = useRef<HTMLDivElement>(null);
   const reachOutPageRef = useRef<HTMLDivElement>(null);
   const experienceAndEducationPageRef = useRef<HTMLDivElement>(null);
@@ -58,10 +53,10 @@ const Home: NextPage = () => {
           </TitleAndSubtitle>
           <ActionButtons>
             <KnowMoreButton>
-              <StyledButton type="link" shape="round" size={size} onClick={handleKnowMoreClick}><TextInButton>KNOW MORE</TextInButton></StyledButton>
+              <StyledButton type="link" shape="round" size="large" onClick={handleKnowMoreClick}><TextInButton>KNOW MORE</TextInButton></StyledButton>
             </KnowMoreButton>
             <ReachOutButton>
-              <StyledButton type="link" shape="round" size={size} onClick={handleReachOutClick}><TextInButton>REACH OUT</TextInButton></StyledButton>
+              <StyledButton type="link" shape="round" size="large" onClick={handleReachOutClick}><TextInButton>REACH OUT</TextInButton></StyledButton>
             </ReachOutButton>
           </ActionButtons>
         </Content>

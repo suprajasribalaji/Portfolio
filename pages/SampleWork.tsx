@@ -1,18 +1,12 @@
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
-import type { ConfigProviderProps } from 'antd';
 import { NextPage } from "next";
-import { useState } from "react";
 import styled from "styled-components";
 
 import todoList from "../public/images/expedu-bg-img.jpeg";
 import dnsManager from "../public/images/dns-manager.jpg";
 
-type SizeType = ConfigProviderProps['componentSize'];
-
 const SampleWork: NextPage = () => {
-    const [size, setSize] = useState<SizeType>('large');
-
     return (
         <SampleWorkPage>
             <SampleWorkContent>
@@ -37,7 +31,7 @@ const SampleWork: NextPage = () => {
                         </Description>
                         <SourceCode>
                             <a href="https://github.com/suprajasribalaji/task_note" target="_blank" rel="noopener noreferrer">
-                                <StyledButton type="link" size={size}>Source Code</StyledButton>
+                                <StyledButton type="link" size="large">Source Code</StyledButton>
                             </a>
                         </SourceCode>
                     </TaskNote>
@@ -58,7 +52,7 @@ const SampleWork: NextPage = () => {
                         </Description>
                         <SourceCode>
                             <a href="https://github.com/suprajasribalaji/DNSManager" target="_blank" rel="noopener noreferrer">
-                                <StyledButton type="link" size={size}>Source Code</StyledButton>
+                                <StyledButton type="link" size="large">Source Code</StyledButton>
                             </a>
                         </SourceCode>
                     </DNSManager>

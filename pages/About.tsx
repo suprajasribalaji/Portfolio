@@ -5,10 +5,6 @@ import { NextPage } from "next";
 import ProfilePicture from "../public/images/myImage.jpg";
 import styled from "styled-components";
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
-import type { ConfigProviderProps } from 'antd';
-import { useState } from "react";
-
-type SizeType = ConfigProviderProps['componentSize'];
 
 type Props = {
     handleResumeClick: () => void,
@@ -16,9 +12,6 @@ type Props = {
 }
 
 const About: NextPage<Props> = ({ handleResumeClick, handleProjectClick }) => {
-
-  const [size, setSize] = useState<SizeType>('large');
-
     return (
         <AboutPage>
             <AboutContent>
@@ -30,10 +23,10 @@ const About: NextPage<Props> = ({ handleResumeClick, handleProjectClick }) => {
                 </Content>
                 <Buttons>
                     <ResumeButton>
-                        <StyledButton type="link" shape="round" size={size} onClick={handleResumeClick}>Resume</StyledButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={handleResumeClick}>Resume</StyledButton>
                     </ResumeButton>
                     <ProjectButton>
-                        <StyledButton type="link" shape="round" size={size} onClick={handleProjectClick}>Project</StyledButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Project</StyledButton>
                     </ProjectButton>                    
                 </Buttons>
             </AboutContent>

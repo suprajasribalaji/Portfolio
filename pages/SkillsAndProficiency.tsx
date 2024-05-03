@@ -2,19 +2,13 @@ import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
 import styled from "styled-components";
 import SkillsProficiencyBgImg from "../public/images/skillprof-bg-img.jpeg";
-import { Button, ConfigProviderProps, Progress } from "antd";
-import { useState } from "react";
-
-type SizeType = ConfigProviderProps['componentSize'];
+import { Button, Progress } from "antd";
 
 type Props = {
     handleProjectClick: () => void,
 }
 
 const SkillsAndProficiency: NextPage<Props> = ({ handleProjectClick }) => {
-
-    const [size, setSize] = useState<SizeType>('large');
-
     return (
         <SkillsAndProficiencyPage>
             <BackgroundImage>
@@ -70,10 +64,10 @@ const SkillsAndProficiency: NextPage<Props> = ({ handleProjectClick }) => {
                     </AboutSkillsAndProficiency>
                     <ActionButton>
                         <DownloadResumeButton>
-                            <StyledButton type="link" shape="round" size={size}>Download</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" >Download</StyledButton>
                         </DownloadResumeButton>
                         <SampleWorkButton>
-                            <StyledButton type="link" shape="round" size={size} onClick={handleProjectClick}>Sample Work</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Sample Work</StyledButton>
                         </SampleWorkButton>
                     </ActionButton>
                 </SkillsAndProficiencyContent>
