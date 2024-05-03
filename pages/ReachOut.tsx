@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { MailOutlined, LinkedinFilled, GithubOutlined } from "@ant-design/icons";
 
 import reachOutSideImg from "../public/images/reach-out.jpeg";
-import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
+import { BackgroundColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
 
 
