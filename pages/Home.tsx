@@ -11,6 +11,7 @@ import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
+import ReachOut from "./ReachOut";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
@@ -51,6 +52,9 @@ const Home: NextPage = () => {
       <SampleWorkPage>
         <SampleWork/>
       </SampleWorkPage>
+      <ReachOutPage>
+        <ReachOut />
+      </ReachOutPage>
     </HomePage>
   )
 }
@@ -133,3 +137,5 @@ const ExperienceAndEducationPage = styled(HomePage)``;
 const SkillsAndProficiencyPage = styled(HomePage)``;
 
 const SampleWorkPage = styled(HomePage)``;
+
+const ReachOutPage = styled(HomePage)``;

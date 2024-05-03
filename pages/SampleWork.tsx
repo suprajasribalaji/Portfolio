@@ -1,13 +1,11 @@
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
-import { LinkOutlined } from '@ant-design/icons';
-import linkSvg from '@ant-design/icons-svg/lib/asn/LinkOutlined.svg';
 import type { ConfigProviderProps } from 'antd';
 import { NextPage } from "next";
 import { useState } from "react";
 import styled from "styled-components";
 
-import todoList from "../public/images/todo-list.jpeg";
+import todoList from "../public/images/expedu-bg-img.jpeg";
 import dnsManager from "../public/images/dns-manager.jpg";
 
 type SizeType = ConfigProviderProps['componentSize'];
@@ -23,14 +21,11 @@ const SampleWork: NextPage = () => {
                 </Title>
                 <Content>
                     <TaskNote>
-                      
                       <HostPage>
                         <a href="https://task-note-ab071.web.app/" target="_blank" rel="noopener noreferrer">
                           <TaskNoteHostPage />
                         </a>
                       </HostPage>
-                     
-                      
                         <Description>
                             <WorkTitle>
                                 Task Note
