@@ -10,7 +10,12 @@ import { useState } from "react";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
-const About: NextPage = () => {
+type Props = {
+    handleResumeClick: () => void,
+    handleProjectClick: () => void,
+}
+
+const About: NextPage<Props> = ({ handleResumeClick, handleProjectClick }) => {
 
   const [size, setSize] = useState<SizeType>('large');
 
@@ -21,14 +26,14 @@ const About: NextPage = () => {
                     <TitleHeading>About Me</TitleHeading>
                 </Title>
                 <Content>
-                With six months of experience and an internship at 5C Network, I have honed my skills in full-stack development utilizing JavaScript and TypeScript. Committed to delivering resilient solutions, I actively participate in pioneering projects and consistently pursue avenues for personal and professional growth. My unwavering dedication to excellence motivates me to consistently improve my skill set, enabling me to make meaningful contributions to the progression of full-stack development endeavors.
+                With 7 months of experience and an internship at 5C Network, I have honed my skills in full-stack development utilizing JavaScript and TypeScript. Committed to delivering resilient solutions, I actively participate in pioneering projects and consistently pursue avenues for personal and professional growth. My unwavering dedication to excellence motivates me to consistently improve my skill set, enabling me to make meaningful contributions to the progression of full-stack development endeavors.
                 </Content>
                 <Buttons>
                     <ResumeButton>
-                        <StyledButton type="link" shape="round" size={size}>Resume</StyledButton>
+                        <StyledButton type="link" shape="round" size={size} onClick={handleResumeClick}>Resume</StyledButton>
                     </ResumeButton>
                     <ProjectButton>
-                        <StyledButton type="link" shape="round" size={size}>Project</StyledButton>
+                        <StyledButton type="link" shape="round" size={size} onClick={handleProjectClick}>Project</StyledButton>
                     </ProjectButton>                    
                 </Buttons>
             </AboutContent>
@@ -79,8 +84,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }

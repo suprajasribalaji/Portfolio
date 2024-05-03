@@ -20,6 +20,9 @@ const Home: NextPage = () => {
 
   const aboutPageRef = useRef<HTMLDivElement>(null);
   const reachOutPageRef = useRef<HTMLDivElement>(null);
+  const experienceAndEducationPageRef = useRef<HTMLDivElement>(null);
+  const skillsAndProficiencyPageRef = useRef<HTMLDivElement>(null);
+  const sampleWorkPageRef = useRef<HTMLDivElement>(null);
 
   const handleKnowMoreClick = () => {
     aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -27,6 +30,18 @@ const Home: NextPage = () => {
 
   const handleReachOutClick = () => {
     reachOutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeClick = () => {
+    experienceAndEducationPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeContinuationClick = () => {
+    skillsAndProficiencyPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleProjectClick = () => {
+    sampleWorkPageRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -52,15 +67,22 @@ const Home: NextPage = () => {
         </Content>
       </BackgroundImage>
       <AboutPage ref={aboutPageRef}>
-        <About />
+        <About
+          handleResumeClick={handleResumeClick}
+          handleProjectClick={handleProjectClick}
+        />
       </AboutPage>
-      <ExperienceAndEducationPage>
-        <ExperienceAndEducation />
+      <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
+        <ExperienceAndEducation 
+          handleResumeContinuationClick={handleResumeContinuationClick}
+        />
       </ExperienceAndEducationPage>
-      <SkillsAndProficiencyPage>
-        <SkillsAndProficiency />
+      <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
+        <SkillsAndProficiency 
+          handleProjectClick={handleProjectClick}
+        />
       </SkillsAndProficiencyPage>
-      <SampleWorkPage>
+      <SampleWorkPage ref={sampleWorkPageRef}>
         <SampleWork/>
       </SampleWorkPage>
       <ReachOutPage ref={reachOutPageRef}>
@@ -75,6 +97,8 @@ export default Home;
 const HomePage = styled.div`
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100vh;
 `;
 
 const BackgroundImage = styled.div`

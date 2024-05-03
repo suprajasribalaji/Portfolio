@@ -7,7 +7,11 @@ import { useState } from "react";
 
 type SizeType = ConfigProviderProps['componentSize'];
 
-const SkillsAndProficiency: NextPage = () => {
+type Props = {
+    handleProjectClick: () => void,
+}
+
+const SkillsAndProficiency: NextPage<Props> = ({ handleProjectClick }) => {
 
     const [size, setSize] = useState<SizeType>('large');
 
@@ -69,7 +73,7 @@ const SkillsAndProficiency: NextPage = () => {
                             <StyledButton type="link" shape="round" size={size}>Download</StyledButton>
                         </DownloadResumeButton>
                         <SampleWorkButton>
-                            <StyledButton type="link" shape="round" size={size}>Sample Work</StyledButton>
+                            <StyledButton type="link" shape="round" size={size} onClick={handleProjectClick}>Sample Work</StyledButton>
                         </SampleWorkButton>
                     </ActionButton>
                 </SkillsAndProficiencyContent>
@@ -164,8 +168,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }
