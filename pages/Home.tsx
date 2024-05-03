@@ -2,7 +2,7 @@
 
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
@@ -18,6 +18,17 @@ type SizeType = ConfigProviderProps['componentSize'];
 const Home: NextPage = () => {
   const [size, setSize] = useState<SizeType>('large');
 
+  const aboutPageRef = useRef<HTMLDivElement>(null);
+  const reachOutPageRef = useRef<HTMLDivElement>(null);
+
+  const handleKnowMoreClick = () => {
+    aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleReachOutClick = () => {
+    reachOutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <HomePage>
       <BackgroundImage>
@@ -32,27 +43,27 @@ const Home: NextPage = () => {
           </TitleAndSubtitle>
           <ActionButtons>
             <KnowMoreButton>
-              <StyledButton type="link" shape="round" size={size}><TextInButton>KNOW MORE</TextInButton></StyledButton>
+              <StyledButton type="link" shape="round" size={size} onClick={handleKnowMoreClick}><TextInButton>KNOW MORE</TextInButton></StyledButton>
             </KnowMoreButton>
             <ReachOutButton>
-              <StyledButton type="link" shape="round" size={size}><TextInButton>REACH OUT</TextInButton></StyledButton>
+              <StyledButton type="link" shape="round" size={size} onClick={handleReachOutClick}><TextInButton>REACH OUT</TextInButton></StyledButton>
             </ReachOutButton>
           </ActionButtons>
         </Content>
       </BackgroundImage>
-      <AboutPage>
+      <AboutPage ref={aboutPageRef}>
         <About />
       </AboutPage>
-      <ExperienceAndEducationPage>
+      <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
         <ExperienceAndEducation />
       </ExperienceAndEducationPage>
-      <SkillsAndProficiencyPage>
+      <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
         <SkillsAndProficiency />
       </SkillsAndProficiencyPage>
-      <SampleWorkPage>
+      <SampleWorkPage ref={sampleWorkPageRef}>
         <SampleWork/>
       </SampleWorkPage>
-      <ReachOutPage>
+      <ReachOutPage ref={reachOutPageRef}>
         <ReachOut />
       </ReachOutPage>
     </HomePage>
@@ -111,8 +122,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }
