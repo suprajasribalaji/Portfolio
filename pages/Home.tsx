@@ -54,13 +54,13 @@ const Home: NextPage = () => {
       <AboutPage ref={aboutPageRef}>
         <About />
       </AboutPage>
-      <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
+      <ExperienceAndEducationPage>
         <ExperienceAndEducation />
       </ExperienceAndEducationPage>
-      <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
+      <SkillsAndProficiencyPage>
         <SkillsAndProficiency />
       </SkillsAndProficiencyPage>
-      <SampleWorkPage ref={sampleWorkPageRef}>
+      <SampleWorkPage>
         <SampleWork/>
       </SampleWorkPage>
       <ReachOutPage ref={reachOutPageRef}>
