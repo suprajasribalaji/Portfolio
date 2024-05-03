@@ -5,9 +5,11 @@ export const LinearGradientColor = {
 
 export const TextColor = {
     primaryWhite: '#fff',
-    secondaryWhite: '#f4f4f4',
+    secondaryWhite: '#f6f6f6',
+    tertiaryWhite: '#f4f4f4',
     lightWhite: '#FFFFFF66',
     SemiLightWhite: '#FFFFFFD9',
+    
 };
 
 export const ButtonColor = {
@@ -16,4 +18,6 @@ export const ButtonColor = {
 
 export const BackgroundColor = {
     aboutBg: '#f6f6f6',
+    sampleWorkBg: '#343434',
+    reachOutBg: '#000000',
 }
