@@ -1,9 +1,10 @@
 import { NextPage } from "next";
 import styled from "styled-components";
-import { LinkedinFilled, InstagramOutlined, MailOutlined } from "@ant-design/icons";
+import { MailOutlined, LinkedinFilled, GithubOutlined } from "@ant-design/icons";
 
 import reachOutSideImg from "../public/images/reach-out.jpeg";
-import { BackgroundColor, TextColor } from "@/theme/color";
+import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
+import { Button } from "antd";
 
 
 const ReachOut: NextPage = () => {
@@ -21,14 +22,14 @@ const ReachOut: NextPage = () => {
                 <ConnectWithMe>
                     <ConnectWithMeTitle>CONNECT WITH ME</ConnectWithMeTitle>
                     <SocialMedialProfileLinks>
-                        <InstagramProfileLink>
-                            <InstagramOutlined />
-                        </InstagramProfileLink>
                         <LinkedInProfileLink>
-                            <LinkedinFilled />
+                            <StyledButton type="link" href="https://www.linkedin.com/in/suprajasrirb/" target="_blank" rel="noopener noreferrer" icon={<LinkedinFilled  style={{fontSize: '180%'}} />}></StyledButton>
                         </LinkedInProfileLink>
+                        <GithubProfileLink>
+                            <StyledButton type="link" href="https://github.com/suprajasribalaji" target="_blank" rel="noopener noreferrer" icon={<GithubOutlined  style={{fontSize: '180%'}} />}></StyledButton>
+                        </GithubProfileLink>
                         <EmailIDLink>
-                            <MailOutlined />
+                            <StyledButton type="link" href="mailto:suprajasri.balaji@gmail.com" icon={<MailOutlined style={{fontSize: '180%'}} />}></StyledButton>
                         </EmailIDLink>
                     </SocialMedialProfileLinks>
                 </ConnectWithMe>
@@ -96,14 +97,22 @@ const ConnectWithMeTitle = styled.div`
 const SocialMedialProfileLinks = styled.div`
     display: flex;
     flex-direction: row;
-    margin-top: 8%;
-    font-size: 198%;
+    margin-top: 10%;
 `;
 
-const InstagramProfileLink = styled.div``;
+const LinkedInProfileLink = styled.div``;
 
-const LinkedInProfileLink = styled.div`
-    margin-left: 15%;
+const GithubProfileLink = styled.div`
+    margin-left: 5%;
 `;
 
-const EmailIDLink = styled(LinkedInProfileLink)``;
+const EmailIDLink = styled(GithubProfileLink)``;
+
+const StyledButton = styled(Button)`
+  border: none;
+  color: ${TextColor.primaryWhite};
+  &&&:hover {
+    color: ${TextColor.lightWhite};
+  }
+  
+`;
