@@ -1,12 +1,12 @@
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
-import { NextPage } from "next";
 import styled from "styled-components";
 
 import todoList from "../public/images/expedu-bg-img.jpeg";
 import dnsManager from "../public/images/dns-manager.jpg";
+import React from "react";
 
-const SampleWork: NextPage = () => {
+const SampleWork: React.FC = () => {
     return (
         <SampleWorkPage>
             <SampleWorkContent>

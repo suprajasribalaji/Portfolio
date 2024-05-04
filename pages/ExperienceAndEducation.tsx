@@ -1,15 +1,15 @@
-import { NextPage } from "next";
 import styled from "styled-components";
 import ExpEduBackgroundImage from "../public/images/expedu-bg-img.jpeg";
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
+import React from "react";
 
 
 type Props = {
     handleResumeContinuationClick: () => void,
 }
 
-const ExperienceAndEducation: NextPage<Props> = ({ handleResumeContinuationClick }) => {
+const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick }) => {
     return (
         <ExperienceAndEducationPage>
             <BackgroundImage>

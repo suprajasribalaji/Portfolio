@@ -1,14 +1,14 @@
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
-import { NextPage } from "next";
 import styled from "styled-components";
 import SkillsProficiencyBgImg from "../public/images/skillprof-bg-img.jpeg";
 import { Button, Progress } from "antd";
+import React from "react";
 
 type Props = {
     handleProjectClick: () => void,
 }
 
-const SkillsAndProficiency: NextPage<Props> = ({ handleProjectClick }) => {
+const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick }) => {
     return (
         <SkillsAndProficiencyPage>
             <BackgroundImage>

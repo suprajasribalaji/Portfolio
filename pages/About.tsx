@@ -1,17 +1,17 @@
 'use client'
 
 import { Button } from "antd";
-import { NextPage } from "next";
 import ProfilePicture from "../public/images/myImage.jpg";
 import styled from "styled-components";
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
+import React from "react";
 
 type Props = {
     handleResumeClick: () => void,
     handleProjectClick: () => void,
 }
 
-const About: NextPage<Props> = ({ handleResumeClick, handleProjectClick }) => {
+const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick }) => {
     return (
         <AboutPage>
             <AboutContent>
