@@ -1,77 +1,270 @@
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
-import { Button } from "antd";
+import React, { useEffect, useRef, useState } from "react";
+import { Button, Card, Carousel } from "antd";
 import styled from "styled-components";
 
-import todoList from "../public/images/expedu-bg-img.jpeg";
-import dnsManager from "../public/images/dns-manager.jpg";
-import React from "react";
+const { Meta } = Card;
+
+const taskNoteImageSrc = "/images/expedu-bg-img.jpeg";
+const taskNoteDemoLink = "https://task-note-ab071.web.app/";
+const taskNoteSourceCodeLink = "https://github.com/suprajasribalaji/task_note";
+
+const dnsManagerImageSrc = "/images/dns-manager.jpg";
+const dnsManagerDemoLink = "https://dns-manager-8da5e.web.app/";
+const dnsManagerSourceCodeLink = "https://github.com/suprajasribalaji/DNSManager";
+
+const portfolioImageSrc = "/images/portfolio.jpeg";
+const portfolioDemoLink = "";
+const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/portfolio";
+
+const projectDetails = [
+  {
+    title: "Task Note",
+    description:
+      "Designed intuitive UI with ReactJS, JavaScript, Redux, and Ant Design for efficient task management, including CRUD operations, ensuring seamless user experience.",
+    demoLink: `${taskNoteDemoLink}`,
+    sourceCodeLink: `${taskNoteSourceCodeLink}`,
+    imageSrc: `${taskNoteImageSrc}`,
+  },
+  // {
+  //   title: "DNS Manager",
+  //   description:
+  //     "Designed a user-friendly UI with ReactJS, TypeScript, and Ant Design for effortless DNS record management, integrating AWS Route53, supporting CRUD operations.",
+  //   demoLink: `${dnsManagerDemoLink}`,
+  //   sourceCodeLink: `${dnsManagerSourceCodeLink}`,
+  //   imageSrc: `${dnsManagerImageSrc}`,
+  // },
+  // {
+  //   title: "Portfolio",
+  //   description:
+  //     "Driven by Next.js, TypeScript, and MongoDB, our portfolio exemplifies sophistication in design and functionality. It delivers a refined and elegant user interface.",
+  //   demoLink: `${portfolioDemoLink}`,
+  //   sourceCodeLink: `${portfolioSourceCodeLink}`,
+  //   imageSrc: `${portfolioImageSrc}`,
+  // },
+];
 
 const SampleWork: React.FC = () => {
-    return (
-        <SampleWorkPage>
-            <SampleWorkContent>
-                <Title>
-                    Sample Work
-                </Title>
-                <Content>
-                    <TaskNote>
-                      <HostPage>
-                        <a href="https://task-note-ab071.web.app/" target="_blank" rel="noopener noreferrer">
-                          <TaskNoteHostPage />
-                        </a>
-                      </HostPage>
-                        <Description>
-                            <WorkTitle>
-                                Task Note
-                            </WorkTitle>
-                            <WorkDescription>
-                                Designed intuitive UI with ReactJS, JavaScript, Redux, and Ant Design for efficient task management, 
-                                including CRUD operations, ensuring seamless user experience.
-                            </WorkDescription>    
-                        </Description>
-                        <SourceCode>
-                            <a href="https://github.com/suprajasribalaji/task_note" target="_blank" rel="noopener noreferrer">
-                                <StyledButton type="link" size="large">Source Code</StyledButton>
-                            </a>
-                        </SourceCode>
-                    </TaskNote>
-                    <DNSManager>
-                      <HostPage>
-                        <a href="https://dns-manager-8da5e.web.app/" target="_blank" rel="noopener noreferrer">
-                            <DNSManagerHostPage />
-                        </a>
-                      </HostPage>
-                        <Description>
-                            <WorkTitle>
-                                DNS Manager
-                            </WorkTitle>
-                            <WorkDescription>
-                                Designed a user-friendly UI with ReactJS, TypeScript, and Ant Design for 
-                                effortless DNS record management, integrating AWS Route53, supporting CRUD operations.
-                            </WorkDescription>
-                        </Description>
-                        <SourceCode>
-                            <a href="https://github.com/suprajasribalaji/DNSManager" target="_blank" rel="noopener noreferrer">
-                                <StyledButton type="link" size="large">Source Code</StyledButton>
-                            </a>
-                        </SourceCode>
-                    </DNSManager>
-                </Content>
-            </SampleWorkContent>
-        </SampleWorkPage>
-    )
+  return (
+    <SampleWorkPage>
+      <SampleWorkContent>
+        <Title>
+          Sample Work
+        </Title>
+        <Content>
+        <StyledCarousel arrows dots={false} slidesPerRow={3}>
+      <div>
+      {
+            projectDetails.map((project) => (
+                <StyledCard
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      alt={project.title}
+                      src={project.imageSrc}
+                      style={{ objectFit: 'cover'}}
+                    />
+                  }
+                  actions={[
+                    <StyledCardActions>
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                        Source Code
+                      </a>
+                    </StyledCardActions>
+                  ]}
+                >
+                  <StyledMeta
+                    title={project.title}
+                    description={project.description}
+                  />
+                </StyledCard>
+            ))
+          }
+      </div>
+      <div>
+      {
+            projectDetails.map((project) => (
+                <StyledCard
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      alt={project.title}
+                      src={project.imageSrc}
+                      style={{ objectFit: 'cover'}}
+                    />
+                  }
+                  actions={[
+                    <StyledCardActions>
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                        Source Code
+                      </a>
+                    </StyledCardActions>
+                  ]}
+                >
+                  <StyledMeta
+                    title={project.title}
+                    description={project.description}
+                  />
+                </StyledCard>
+            ))
+          }
+      </div>
+      <div>
+      {
+            projectDetails.map((project) => (
+                <StyledCard
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      alt={project.title}
+                      src={project.imageSrc}
+                      style={{ objectFit: 'cover'}}
+                    />
+                  }
+                  actions={[
+                    <StyledCardActions>
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                        Source Code
+                      </a>
+                    </StyledCardActions>
+                  ]}
+                >
+                  <StyledMeta
+                    title={project.title}
+                    description={project.description}
+                  />
+                </StyledCard>
+            ))
+          }
+      </div>
+      <div>
+      {
+            projectDetails.map((project) => (
+                <StyledCard
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      alt={project.title}
+                      src={project.imageSrc}
+                      style={{ objectFit: 'cover'}}
+                    />
+                  }
+                  actions={[
+                    <StyledCardActions>
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                        Source Code
+                      </a>
+                    </StyledCardActions>
+                  ]}
+                >
+                  <StyledMeta
+                    title={project.title}
+                    description={project.description}
+                  />
+                </StyledCard>
+            ))
+          }
+      </div>
+      <div>
+      {
+            projectDetails.map((project) => (
+                <StyledCard
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      alt={project.title}
+                      src={project.imageSrc}
+                      style={{ objectFit: 'cover'}}
+                    />
+                  }
+                  actions={[
+                    <StyledCardActions>
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                        Source Code
+                      </a>
+                    </StyledCardActions>
+                  ]}
+                >
+                  <StyledMeta
+                    title={project.title}
+                    description={project.description}
+                  />
+                </StyledCard>
+            ))
+          }
+      </div>
+      <div>
+      {
+            projectDetails.map((project) => (
+                <StyledCard
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      alt={project.title}
+                      src={project.imageSrc}
+                      style={{ objectFit: 'cover'}}
+                    />
+                  }
+                  actions={[
+                    <StyledCardActions>
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Demo
+                      </a>
+                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                        Source Code
+                      </a>
+                    </StyledCardActions>
+                  ]}
+                >
+                  <StyledMeta
+                    title={project.title}
+                    description={project.description}
+                  />
+                </StyledCard>
+            ))
+          }
+      </div>
+    </StyledCarousel>
+        </Content>
+      </SampleWorkContent>
+    </SampleWorkPage>
+  )
 }
 
 export default SampleWork;
 
-const StyledButton = styled(Button)`
-  background-color: ${ButtonColor.backgroundColor};
-  border: none;
-  color: ${TextColor.primaryWhite};
-  &&&:hover {
-    background-color: ${ButtonColor.backgroundColor}; 
-    color: ${TextColor.lightWhite};
-  }
+const StyledCarousel = styled(Carousel)`
+  margin-left: 10%;
+  margin-right: 10%;
+  overflow: hidden; 
+`;
+
+const StyledCard = styled(Card)`
+  margin-left: 10%;
+`;
+
+const StyledCardActions = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+
+const StyledMeta = styled(Meta)`
+  text-align: justify;
 `;
 
 const SampleWorkPage = styled.div`
@@ -95,87 +288,7 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 4%;
-  text-align: center;
+  margin-top: 6%;
+  gap: 4%;
   justify-content: center;
-  align-items: center;
-  margin-left: 20%;
-  margin-right: 25%;
-`;
-
-const TaskNote = styled.div`
-  margin-right: 7%;
-`;
-
-const DNSManager = styled.div`
-  margin-left: 1%;
-`;
-
-const HostPage = styled.div`
-  margin-left: 37%;
-`;
-
-const TaskNoteHostPage = styled.div`
-  position: relative;
-  width: 160px;
-  height: 160px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-image: url(${todoList.src});
-  cursor: pointer;
-  align-items: flex-end; 
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.5;
-  }
-
-  &::after {
-    content: '\u{1F517}'; 
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    color: ${TextColor.primaryWhite};
-    font-weight: bold; 
-    font-size: 120%; 
-    transform: rotate(8deg);
-    opacity: 0; 
-    transition: opacity 0.3s ease; 
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-`;
-
-const DNSManagerHostPage = styled(TaskNoteHostPage)`
-  background-image: url(${dnsManager.src});
-`;
-
-
-const Description = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 15%;
-    margin-left: 24%;
-`;
-
-const SourceCode = styled.div`
-  margin-top: 15%;
-  margin-left: 24%; 
-`;
-
-const WorkTitle = styled.div`
-  margin-right: 5%;
-  margin-bottom: 4%;
-  margin-top: -6%;
-  font-weight: bold;
-
-`;
-
-const WorkDescription = styled.div`
-  line-height: 140%;
 `;
