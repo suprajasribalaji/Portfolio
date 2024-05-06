@@ -1,17 +1,15 @@
-import { NextPage } from "next";
 import styled from "styled-components";
 import ExpEduBackgroundImage from "../public/images/expedu-bg-img.jpeg";
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
-import type { ConfigProviderProps } from 'antd';
 import { Button } from "antd";
-import { useState } from "react";
+import React from "react";
 
-type SizeType = ConfigProviderProps['componentSize'];
 
-const ExperienceAndEducation: NextPage = () => {
+type Props = {
+    handleResumeContinuationClick: () => void,
+}
 
-    const [size, setSize] = useState<SizeType>('large');
-
+const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick }) => {
     return (
         <ExperienceAndEducationPage>
             <BackgroundImage>
@@ -76,10 +74,10 @@ const ExperienceAndEducation: NextPage = () => {
                 <ActionButton>
                     <NextPageButton>
                         <DownloadButton>
-                            <StyledButton type="link" shape="round" size={size}>Download</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" >Download</StyledButton>
                         </DownloadButton>
                         <SkillsAndProficiencyButton>
-                            <StyledButton type="link" shape="round" size={size}>Skills & Proficiency</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" onClick={handleResumeContinuationClick}>Skills & Proficiency</StyledButton>
                         </SkillsAndProficiencyButton>
                     </NextPageButton>
                 </ActionButton>
@@ -212,8 +210,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }

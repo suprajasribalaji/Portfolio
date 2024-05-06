@@ -1,16 +1,14 @@
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
-import { NextPage } from "next";
 import styled from "styled-components";
 import SkillsProficiencyBgImg from "../public/images/skillprof-bg-img.jpeg";
-import { Button, ConfigProviderProps, Progress } from "antd";
-import { useState } from "react";
+import { Button, Progress } from "antd";
+import React from "react";
 
-type SizeType = ConfigProviderProps['componentSize'];
+type Props = {
+    handleProjectClick: () => void,
+}
 
-const SkillsAndProficiency: NextPage = () => {
-
-    const [size, setSize] = useState<SizeType>('large');
-
+const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick }) => {
     return (
         <SkillsAndProficiencyPage>
             <BackgroundImage>
@@ -66,10 +64,10 @@ const SkillsAndProficiency: NextPage = () => {
                     </AboutSkillsAndProficiency>
                     <ActionButton>
                         <DownloadResumeButton>
-                            <StyledButton type="link" shape="round" size={size}>Download</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" >Download</StyledButton>
                         </DownloadResumeButton>
                         <SampleWorkButton>
-                            <StyledButton type="link" shape="round" size={size}>Sample Work</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Sample Work</StyledButton>
                         </SampleWorkButton>
                     </ActionButton>
                 </SkillsAndProficiencyContent>
@@ -164,8 +162,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }

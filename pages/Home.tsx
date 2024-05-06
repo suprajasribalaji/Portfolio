@@ -2,21 +2,42 @@
 
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
-import { useState } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
-import type { ConfigProviderProps } from 'antd';
 import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
 import ReachOut from "./ReachOut";
 
-type SizeType = ConfigProviderProps['componentSize'];
-
 const Home: NextPage = () => {
-  const [size, setSize] = useState<SizeType>('large');
+  const aboutPageRef = useRef<HTMLDivElement>(null);
+  const reachOutPageRef = useRef<HTMLDivElement>(null);
+  const experienceAndEducationPageRef = useRef<HTMLDivElement>(null);
+  const skillsAndProficiencyPageRef = useRef<HTMLDivElement>(null);
+  const sampleWorkPageRef = useRef<HTMLDivElement>(null);
+
+  const handleKnowMoreClick = () => {
+    aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleReachOutClick = () => {
+    reachOutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeClick = () => {
+    experienceAndEducationPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeContinuationClick = () => {
+    skillsAndProficiencyPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleProjectClick = () => {
+    sampleWorkPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <HomePage>
@@ -32,27 +53,34 @@ const Home: NextPage = () => {
           </TitleAndSubtitle>
           <ActionButtons>
             <KnowMoreButton>
-              <StyledButton type="link" shape="round" size={size}><TextInButton>KNOW MORE</TextInButton></StyledButton>
+              <StyledButton type="link" shape="round" size="large" onClick={handleKnowMoreClick}><TextInButton>KNOW MORE</TextInButton></StyledButton>
             </KnowMoreButton>
             <ReachOutButton>
-              <StyledButton type="link" shape="round" size={size}><TextInButton>REACH OUT</TextInButton></StyledButton>
+              <StyledButton type="link" shape="round" size="large" onClick={handleReachOutClick}><TextInButton>REACH OUT</TextInButton></StyledButton>
             </ReachOutButton>
           </ActionButtons>
         </Content>
       </BackgroundImage>
-      <AboutPage>
-        <About />
+      <AboutPage ref={aboutPageRef}>
+        <About
+          handleResumeClick={handleResumeClick}
+          handleProjectClick={handleProjectClick}
+        />
       </AboutPage>
-      <ExperienceAndEducationPage>
-        <ExperienceAndEducation />
+      <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
+        <ExperienceAndEducation 
+          handleResumeContinuationClick={handleResumeContinuationClick}
+        />
       </ExperienceAndEducationPage>
-      <SkillsAndProficiencyPage>
-        <SkillsAndProficiency />
+      <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
+        <SkillsAndProficiency 
+          handleProjectClick={handleProjectClick}
+        />
       </SkillsAndProficiencyPage>
-      <SampleWorkPage>
+      <SampleWorkPage ref={sampleWorkPageRef}>
         <SampleWork/>
       </SampleWorkPage>
-      <ReachOutPage>
+      <ReachOutPage ref={reachOutPageRef}>
         <ReachOut />
       </ReachOutPage>
     </HomePage>
@@ -64,6 +92,8 @@ export default Home;
 const HomePage = styled.div`
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100vh;
 `;
 
 const BackgroundImage = styled.div`
@@ -111,8 +141,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }

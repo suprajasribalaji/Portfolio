@@ -1,13 +1,13 @@
-import { NextPage } from "next";
 import styled from "styled-components";
 import { MailOutlined, LinkedinFilled, GithubOutlined } from "@ant-design/icons";
 
 import reachOutSideImg from "../public/images/reach-out.jpeg";
-import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
+import { BackgroundColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
+import React from "react";
 
 
-const ReachOut: NextPage = () => {
+const ReachOut: React.FC = () => {
     return (
         <ReachOutPage>
             <SideImage />

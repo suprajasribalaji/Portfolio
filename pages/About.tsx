@@ -1,19 +1,17 @@
 'use client'
 
 import { Button } from "antd";
-import { NextPage } from "next";
 import ProfilePicture from "../public/images/myImage.jpg";
 import styled from "styled-components";
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
-import type { ConfigProviderProps } from 'antd';
-import { useState } from "react";
+import React from "react";
 
-type SizeType = ConfigProviderProps['componentSize'];
+type Props = {
+    handleResumeClick: () => void,
+    handleProjectClick: () => void,
+}
 
-const About: NextPage = () => {
-
-  const [size, setSize] = useState<SizeType>('large');
-
+const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick }) => {
     return (
         <AboutPage>
             <AboutContent>
@@ -21,14 +19,14 @@ const About: NextPage = () => {
                     <TitleHeading>About Me</TitleHeading>
                 </Title>
                 <Content>
-                With six months of experience and an internship at 5C Network, I have honed my skills in full-stack development utilizing JavaScript and TypeScript. Committed to delivering resilient solutions, I actively participate in pioneering projects and consistently pursue avenues for personal and professional growth. My unwavering dedication to excellence motivates me to consistently improve my skill set, enabling me to make meaningful contributions to the progression of full-stack development endeavors.
+                With 7 months of experience and an internship at 5C Network, I have honed my skills in full-stack development utilizing JavaScript and TypeScript. Committed to delivering resilient solutions, I actively participate in pioneering projects and consistently pursue avenues for personal and professional growth. My unwavering dedication to excellence motivates me to consistently improve my skill set, enabling me to make meaningful contributions to the progression of full-stack development endeavors.
                 </Content>
                 <Buttons>
                     <ResumeButton>
-                        <StyledButton type="link" shape="round" size={size}>Resume</StyledButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={handleResumeClick}>Resume</StyledButton>
                     </ResumeButton>
                     <ProjectButton>
-                        <StyledButton type="link" shape="round" size={size}>Project</StyledButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Project</StyledButton>
                     </ProjectButton>                    
                 </Buttons>
             </AboutContent>
@@ -79,8 +77,7 @@ const StyledButton = styled(Button)`
   background-color: ${ButtonColor.backgroundColor};
   border: none;
   color: ${TextColor.primaryWhite};
-  &&&:hover,
-  &&&:focus {
+  &&&:hover {
     background-color: ${ButtonColor.backgroundColor}; 
     color: ${TextColor.lightWhite};
   }
