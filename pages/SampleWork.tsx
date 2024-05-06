@@ -1,6 +1,6 @@
-import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Card, Carousel } from "antd";
+import { BackgroundColor, TextColor } from "@/theme/color";
+import React from "react";
+import { Card, Carousel } from "antd";
 import styled from "styled-components";
 
 const { Meta } = Card;
