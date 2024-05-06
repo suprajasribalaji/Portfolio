@@ -26,22 +26,22 @@ const projectDetails = [
     sourceCodeLink: `${taskNoteSourceCodeLink}`,
     imageSrc: `${taskNoteImageSrc}`,
   },
-  // {
-  //   title: "DNS Manager",
-  //   description:
-  //     "Designed a user-friendly UI with ReactJS, TypeScript, and Ant Design for effortless DNS record management, integrating AWS Route53, supporting CRUD operations.",
-  //   demoLink: `${dnsManagerDemoLink}`,
-  //   sourceCodeLink: `${dnsManagerSourceCodeLink}`,
-  //   imageSrc: `${dnsManagerImageSrc}`,
-  // },
-  // {
-  //   title: "Portfolio",
-  //   description:
-  //     "Driven by Next.js, TypeScript, and MongoDB, our portfolio exemplifies sophistication in design and functionality. It delivers a refined and elegant user interface.",
-  //   demoLink: `${portfolioDemoLink}`,
-  //   sourceCodeLink: `${portfolioSourceCodeLink}`,
-  //   imageSrc: `${portfolioImageSrc}`,
-  // },
+  {
+    title: "DNS Manager",
+    description:
+      "Designed a user-friendly UI with ReactJS, TypeScript, and Ant Design for effortless DNS record management, integrating AWS Route53, supporting CRUD operations.",
+    demoLink: `${dnsManagerDemoLink}`,
+    sourceCodeLink: `${dnsManagerSourceCodeLink}`,
+    imageSrc: `${dnsManagerImageSrc}`,
+  },
+  {
+    title: "Portfolio",
+    description:
+      "Driven by Next.js, TypeScript, and MongoDB, our portfolio exemplifies sophistication in design and functionality. It delivers a refined and elegant user interface.",
+    demoLink: `${portfolioDemoLink}`,
+    sourceCodeLink: `${portfolioSourceCodeLink}`,
+    imageSrc: `${portfolioImageSrc}`,
+  },
 ];
 
 const SampleWork: React.FC = () => {
@@ -52,194 +52,39 @@ const SampleWork: React.FC = () => {
           Sample Work
         </Title>
         <Content>
-        <StyledCarousel arrows dots={false} slidesPerRow={3}>
-      <div>
-      {
-            projectDetails.map((project) => (
-                <StyledCard
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt={project.title}
-                      src={project.imageSrc}
-                      style={{ objectFit: 'cover'}}
+          <StyledCarousel arrows dots={false} slidesPerRow={3}>
+            {
+              projectDetails.map((project) => (
+                <div>
+                  <StyledCard
+                    style={{ width: 300 }}
+                    cover={
+                      <img
+                        alt={project.title}
+                        src={project.imageSrc}
+                        style={{ objectFit: 'cover'}}
+                      />
+                    }
+                    actions={[
+                      <StyledCardActions>
+                        <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                          Demo
+                        </a>
+                        <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                          Source Code
+                        </a>
+                      </StyledCardActions>
+                    ]}
+                  >
+                    <StyledMeta
+                      title={project.title}
+                      description={project.description}
                     />
-                  }
-                  actions={[
-                    <StyledCardActions>
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
-                        Source Code
-                      </a>
-                    </StyledCardActions>
-                  ]}
-                >
-                  <StyledMeta
-                    title={project.title}
-                    description={project.description}
-                  />
-                </StyledCard>
-            ))
-          }
-      </div>
-      <div>
-      {
-            projectDetails.map((project) => (
-                <StyledCard
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt={project.title}
-                      src={project.imageSrc}
-                      style={{ objectFit: 'cover'}}
-                    />
-                  }
-                  actions={[
-                    <StyledCardActions>
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
-                        Source Code
-                      </a>
-                    </StyledCardActions>
-                  ]}
-                >
-                  <StyledMeta
-                    title={project.title}
-                    description={project.description}
-                  />
-                </StyledCard>
-            ))
-          }
-      </div>
-      <div>
-      {
-            projectDetails.map((project) => (
-                <StyledCard
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt={project.title}
-                      src={project.imageSrc}
-                      style={{ objectFit: 'cover'}}
-                    />
-                  }
-                  actions={[
-                    <StyledCardActions>
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
-                        Source Code
-                      </a>
-                    </StyledCardActions>
-                  ]}
-                >
-                  <StyledMeta
-                    title={project.title}
-                    description={project.description}
-                  />
-                </StyledCard>
-            ))
-          }
-      </div>
-      <div>
-      {
-            projectDetails.map((project) => (
-                <StyledCard
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt={project.title}
-                      src={project.imageSrc}
-                      style={{ objectFit: 'cover'}}
-                    />
-                  }
-                  actions={[
-                    <StyledCardActions>
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
-                        Source Code
-                      </a>
-                    </StyledCardActions>
-                  ]}
-                >
-                  <StyledMeta
-                    title={project.title}
-                    description={project.description}
-                  />
-                </StyledCard>
-            ))
-          }
-      </div>
-      <div>
-      {
-            projectDetails.map((project) => (
-                <StyledCard
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt={project.title}
-                      src={project.imageSrc}
-                      style={{ objectFit: 'cover'}}
-                    />
-                  }
-                  actions={[
-                    <StyledCardActions>
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
-                        Source Code
-                      </a>
-                    </StyledCardActions>
-                  ]}
-                >
-                  <StyledMeta
-                    title={project.title}
-                    description={project.description}
-                  />
-                </StyledCard>
-            ))
-          }
-      </div>
-      <div>
-      {
-            projectDetails.map((project) => (
-                <StyledCard
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      alt={project.title}
-                      src={project.imageSrc}
-                      style={{ objectFit: 'cover'}}
-                    />
-                  }
-                  actions={[
-                    <StyledCardActions>
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Demo
-                      </a>
-                      <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
-                        Source Code
-                      </a>
-                    </StyledCardActions>
-                  ]}
-                >
-                  <StyledMeta
-                    title={project.title}
-                    description={project.description}
-                  />
-                </StyledCard>
-            ))
-          }
-      </div>
-    </StyledCarousel>
+                  </StyledCard>
+                </div>
+              ))
+            }
+          </StyledCarousel>
         </Content>
       </SampleWorkContent>
     </SampleWorkPage>
