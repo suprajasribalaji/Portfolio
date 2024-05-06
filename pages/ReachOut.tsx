@@ -17,7 +17,9 @@ const ReachOut: NextPage = () => {
                 </Title>
                 <ReachOutByMail>
                     <Name>Supraja Sri R B</Name>
-                    <Email>suprajasri.balaji@gmail.com</Email>
+                    <Email>
+                        <StyledButton type="link" href="mailto:suprajasri.balaji@gmail.com">suprajasri.balaji@gmail.com</StyledButton>
+                    </Email>
                 </ReachOutByMail>
                 <ConnectWithMe>
                     <ConnectWithMeTitle>CONNECT WITH ME</ConnectWithMeTitle>
@@ -71,6 +73,7 @@ const Content = styled.div`
 
 const Title = styled.div`
     font-size: 160%;
+    margin-left: 7%;
 `;
 
 const ReachOutByMail = styled.div`
@@ -79,6 +82,7 @@ const ReachOutByMail = styled.div`
 
 const Name = styled.div`
     font-size: 120%;
+    margin-left: 7%;
 `;
 
 const Email = styled.div`
@@ -92,12 +96,14 @@ const ConnectWithMe = styled.div`
 
 const ConnectWithMeTitle = styled.div`
     font-size: 80%;
+    margin-left: 6%;
 `;
 
 const SocialMedialProfileLinks = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 10%;
+    margin-left: 6%;
 `;
 
 const LinkedInProfileLink = styled.div``;
@@ -114,5 +120,4 @@ const StyledButton = styled(Button)`
   &&&:hover {
     color: ${TextColor.lightWhite};
   }
-  
 `;
