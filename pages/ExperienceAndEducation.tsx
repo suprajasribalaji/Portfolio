@@ -7,9 +7,21 @@ import React from "react";
 
 type Props = {
     handleResumeContinuationClick: () => void,
+    resumeURL: string,
 }
 
-const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick }) => {
+const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick, resumeURL }) => {
+
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <ExperienceAndEducationPage>
             <BackgroundImage>
@@ -74,7 +86,7 @@ const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick
                 <ActionButton>
                     <NextPageButton>
                         <DownloadButton>
-                            <StyledButton type="link" shape="round" size="large" >Download</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" onClick={handleDownloadButton}>Download</StyledButton>
                         </DownloadButton>
                         <SkillsAndProficiencyButton>
                             <StyledButton type="link" shape="round" size="large" onClick={handleResumeContinuationClick}>Skills & Proficiency</StyledButton>

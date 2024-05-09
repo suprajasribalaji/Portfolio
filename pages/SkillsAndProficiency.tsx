@@ -6,9 +6,21 @@ import React from "react";
 
 type Props = {
     handleProjectClick: () => void,
+    resumeURL: string,
 }
 
-const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick }) => {
+const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick, resumeURL }) => {
+
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <SkillsAndProficiencyPage>
             <BackgroundImage>
@@ -25,19 +37,19 @@ const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick }) => {
                                 <Skills>
                                     Python, JavaScript, TypeScript
                                     <TechnicalSkillsProgressBar>
-                                        <Progress percent={70} strokeColor='#b4b0ab' trailColor="#FFFFFF" strokeLinecap="butt" showInfo={false} />
+                                        <Progress percent={70} strokeColor='#FFFFFF' trailColor="#b4b0ab" strokeLinecap="butt" showInfo={false} />
                                     </TechnicalSkillsProgressBar>
                                 </Skills>
                                 <Skills>
                                     ReactJS, Redux, NextJS, ExpressJS, CSS (Bootstrap, Ant Design), REST API
                                     <TechnicalSkillsProgressBar>
-                                        <Progress percent={50} strokeColor='#b4b0ab' trailColor="#FFFFFF"  strokeLinecap="butt" showInfo={false} />
+                                        <Progress percent={50} strokeColor='#FFFFFF' trailColor="#b4b0ab"  strokeLinecap="butt" showInfo={false} />
                                     </TechnicalSkillsProgressBar>
                                 </Skills>
                                 <Skills>
                                     Django, AWS, MongoDB, GIT, ORM 
                                     <TechnicalSkillsProgressBar>
-                                        <Progress percent={30} strokeColor='#b4b0ab' trailColor="#FFFFFF"  strokeLinecap="butt" showInfo={false} />
+                                        <Progress percent={30} strokeColor='#FFFFFF' trailColor="#b4b0ab"  strokeLinecap="butt" showInfo={false} />
                                     </TechnicalSkillsProgressBar>
                                 </Skills>
                             </TechnicalSkills>
@@ -50,13 +62,13 @@ const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick }) => {
                                 <Tool>
                                     IDE - Visual Studio Code
                                     <ToolsProgressBar>
-                                        <Progress percent={85} strokeColor='#b4b0ab' trailColor="#FFFFFF"  strokeLinecap="butt" showInfo={false}/>
+                                        <Progress percent={85} strokeColor='#FFFFFF' trailColor="#b4b0ab"  strokeLinecap="butt" showInfo={false}/>
                                     </ToolsProgressBar>
                                </Tool>
                                 <Tool>
                                     DESIGN TOOL - CANVA
                                     <ToolsProgressBar>
-                                        <Progress percent={30}  strokeColor='#b4b0ab' trailColor="#FFFFFF"  strokeLinecap="butt" showInfo={false} />
+                                        <Progress percent={30}  strokeColor='#FFFFFF' trailColor="#b4b0ab"  strokeLinecap="butt" showInfo={false} />
                                     </ToolsProgressBar>
                                 </Tool>
                             </Tools>
@@ -64,7 +76,7 @@ const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick }) => {
                     </AboutSkillsAndProficiency>
                     <ActionButton>
                         <DownloadResumeButton>
-                            <StyledButton type="link" shape="round" size="large" >Download</StyledButton>
+                            <StyledButton type="link" shape="round" size="large" onClick={handleDownloadButton}>Download</StyledButton>
                         </DownloadResumeButton>
                         <SampleWorkButton>
                             <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Sample Work</StyledButton>

@@ -1,17 +1,32 @@
 'use client'
 
-import { Button } from "antd";
+import React, { useState } from "react";
+import { Alert, Button, Space } from "antd";
+import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
 import ProfilePicture from "../public/images/myImage.jpg";
 import styled from "styled-components";
-import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
-import React from "react";
+
 
 type Props = {
     handleResumeClick: () => void,
     handleProjectClick: () => void,
+    resumeURL: string,
 }
 
-const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick }) => {
+const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick, resumeURL }) => {
+    const [isResumeClicked, setIsResumeClicked] = useState<boolean>(false);
+
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setIsResumeClicked(false);
+    };
+
     return (
         <AboutPage>
             <AboutContent>
@@ -19,11 +34,32 @@ const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick }) => {
                     <TitleHeading>About Me</TitleHeading>
                 </Title>
                 <Content>
-                With 7 months of experience and an internship at 5C Network, I have honed my skills in full-stack development utilizing JavaScript and TypeScript. Committed to delivering resilient solutions, I actively participate in pioneering projects and consistently pursue avenues for personal and professional growth. My unwavering dedication to excellence motivates me to consistently improve my skill set, enabling me to make meaningful contributions to the progression of full-stack development endeavors.
+                    With 7 months' experience and an internship at 5C Network, I excel in full-stack development with 
+                    JavaScript and TypeScript. Committed to resilient solutions, I drive pioneering projects and seek 
+                    growth opportunities. My dedication to excellence fuels continuous skill enhancement, 
+                    empowering me to contribute meaningfully to full-stack development.                
                 </Content>
+                <ResumeAlertPopup>
+                    {
+                        isResumeClicked && 
+                            <Alert
+                                message="Resume Options"
+                                description="Do you want to download or view the resume?"
+                                style={{ width: '100%'}}
+                                action={
+                                    <Space style={{ marginRight: '2%'}}>
+                                        <StyledButton type="link" onClick={handleDownloadButton}> Download </StyledButton>
+                                        <StyledButton type="link" onClick={() => {handleResumeClick(); setIsResumeClicked(false)}}> View </StyledButton>
+                                    </Space>
+                                }
+                                onClose={() => setIsResumeClicked(false)}
+                                closable
+                            />
+                    }
+                </ResumeAlertPopup>
                 <Buttons>
                     <ResumeButton>
-                        <StyledButton type="link" shape="round" size="large" onClick={handleResumeClick}>Resume</StyledButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={() => setIsResumeClicked(true)}>Resume</StyledButton>
                     </ResumeButton>
                     <ProjectButton>
                         <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Project</StyledButton>
@@ -99,4 +135,8 @@ const ProfilePhoto = styled.div`
 const StyledImage = styled.img`
     border-radius: 50%;
     object-fit: cover;
+`;
+
+const ResumeAlertPopup = styled.div`
+  margin-top: 6%;
 `;

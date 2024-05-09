@@ -2,7 +2,7 @@
 
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import HomeBgImg from "../public/images/home-bg-img.jpeg";
 import { Button } from "antd";
@@ -11,6 +11,8 @@ import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
 import ReachOut from "./ReachOut";
+import { getDownloadURL, ref } from 'firebase/storage';
+import storage from "@/app/firebase.config";
 
 const Home: NextPage = () => {
   const aboutPageRef = useRef<HTMLDivElement>(null);
@@ -18,7 +20,15 @@ const Home: NextPage = () => {
   const experienceAndEducationPageRef = useRef<HTMLDivElement>(null);
   const skillsAndProficiencyPageRef = useRef<HTMLDivElement>(null);
   const sampleWorkPageRef = useRef<HTMLDivElement>(null);
+  const [resumeURL, setResumeURL] = useState<string>('');
 
+  useEffect(() => {
+      getDownloadURL(ref(storage, 'suprajasrirb_resume.pdf'))
+      .then((url) => {
+          setResumeURL(url);
+          console.log('storage url::::  ', url);
+      })
+  }, []);
   const handleKnowMoreClick = () => {
     aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -65,16 +75,19 @@ const Home: NextPage = () => {
         <About
           handleResumeClick={handleResumeClick}
           handleProjectClick={handleProjectClick}
+          resumeURL={resumeURL}
         />
       </AboutPage>
       <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
         <ExperienceAndEducation 
           handleResumeContinuationClick={handleResumeContinuationClick}
+          resumeURL={resumeURL}
         />
       </ExperienceAndEducationPage>
       <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
         <SkillsAndProficiency 
           handleProjectClick={handleProjectClick}
+          resumeURL={resumeURL}
         />
       </SkillsAndProficiencyPage>
       <SampleWorkPage ref={sampleWorkPageRef}>
