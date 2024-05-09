@@ -2,6 +2,7 @@ import { BackgroundColor, TextColor } from "@/theme/color";
 import React from "react";
 import { Card, Carousel } from "antd";
 import styled from "styled-components";
+import Image from "next/image";
 
 const { Meta } = Card;
 
@@ -54,19 +55,20 @@ const SampleWork: React.FC = () => {
         <Content>
           <StyledCarousel arrows dots={false} slidesPerRow={3}>
             {
-              projectDetails.map((project) => (
-                <div>
+              projectDetails.map((project, index) => (
+                <ProjectDetails key={index}>
                   <StyledCard
                     style={{ width: 300 }}
                     cover={
-                      <img
+                      <Image
                         alt={project.title}
                         src={project.imageSrc}
-                        style={{ objectFit: 'cover'}}
+                        width={300} // Specify width
+                        height={200} // Specify height
                       />
                     }
                     actions={[
-                      <StyledCardActions>
+                      <StyledCardActions key="actions">
                         <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                           Demo
                         </a>
@@ -81,7 +83,7 @@ const SampleWork: React.FC = () => {
                       description={project.description}
                     />
                   </StyledCard>
-                </div>
+                </ProjectDetails>
               ))
             }
           </StyledCarousel>
@@ -104,8 +106,8 @@ const StyledCard = styled(Card)`
 `;
 
 const StyledCardActions = styled.div`
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const StyledMeta = styled(Meta)`
@@ -133,7 +135,9 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  margin-top: 6%;
+  margin-top: 5%;
   gap: 4%;
   justify-content: center;
 `;
+
+const ProjectDetails = styled.div``;
