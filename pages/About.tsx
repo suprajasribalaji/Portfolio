@@ -1,47 +1,142 @@
-import { NextPage } from "next";
-import styled from "styled-components";
-import myImage from "../public/images/myImage.jpg";
-import { Button } from "antd";
+'use client'
 
-const About: NextPage = () => {
+import React, { useState } from "react";
+import { Alert, Button, Space } from "antd";
+import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
+import ProfilePicture from "../public/images/myImage.jpg";
+import styled from "styled-components";
+
+
+type Props = {
+    handleResumeClick: () => void,
+    handleProjectClick: () => void,
+    resumeURL: string,
+}
+
+const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick, resumeURL }) => {
+    const [isResumeClicked, setIsResumeClicked] = useState<boolean>(false);
+
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setIsResumeClicked(false);
+    };
+
     return (
         <AboutPage>
-            <ProfilePictureAndContent>
-                <ProfilePicture>
-                    <img src={myImage.src} />
-                </ProfilePicture>
+            <AboutContent>
+                <Title>
+                    <TitleHeading>About Me</TitleHeading>
+                </Title>
                 <Content>
-                    <div>Let's know eachother</div>
-                    <div>
-                        <h2>Supraja Sri R B</h2>
-                        <p>
-                            Graduated with 8.8 CGPA in B.E. Computer Science from Dr. N.G.P. Institute of Technology, Coimbatore, class of 2024.
-                            My expertise spans across full stack development, acquired through hands-on experience and academic rigor.
-                            During a 6 month internship at 5C Network Pvt Ltd, I honed my skills as a full stack developer, contributing to real-world projects and gaining valuable industry insights.
-                            Passionate about problem-solving, I excel on platforms like Hackerrank and LeetCode, earning 5-star ratings in Python and 4-star ratings in Java and C on Hackerrank. 
-                            Additionally, I've tackled 86 problems on LeetCode, demonstrating my dedication and skills.
-                            <br /><br />
-                            To know more about, Check out my resume.
-                        </p>
-                        <Button type="link">Explore Skills</Button>
-                        <Button type="link">Expolre Projects</Button>
-                    </div>
+                    With 7 months' experience and an internship at 5C Network, I excel in full-stack development with 
+                    JavaScript and TypeScript. Committed to resilient solutions, I drive pioneering projects and seek 
+                    growth opportunities. My dedication to excellence fuels continuous skill enhancement, 
+                    empowering me to contribute meaningfully to full-stack development.                
                 </Content>
-            </ProfilePictureAndContent>
+                <ResumeAlertPopup>
+                    {
+                        isResumeClicked && 
+                            <Alert
+                                message="Resume Options"
+                                description="Do you want to download or view the resume?"
+                                style={{ width: '100%'}}
+                                action={
+                                    <Space style={{ marginRight: '2%'}}>
+                                        <StyledButton type="link" onClick={handleDownloadButton}> Download </StyledButton>
+                                        <StyledButton type="link" onClick={() => {handleResumeClick(); setIsResumeClicked(false)}}> View </StyledButton>
+                                    </Space>
+                                }
+                                onClose={() => setIsResumeClicked(false)}
+                                closable
+                            />
+                    }
+                </ResumeAlertPopup>
+                <Buttons>
+                    <ResumeButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={() => setIsResumeClicked(true)}>Resume</StyledButton>
+                    </ResumeButton>
+                    <ProjectButton>
+                        <StyledButton type="link" shape="round" size="large" onClick={handleProjectClick}>Project</StyledButton>
+                    </ProjectButton>                    
+                </Buttons>
+            </AboutContent>
+            <ProfilePhoto>
+                <StyledImage src={ProfilePicture.src} />
+            </ProfilePhoto>
         </AboutPage>
-    );
-};
+    )
+}
 
 export default About;
 
-const AboutPage = styled.div``;
-
-const ProfilePictureAndContent = styled.div`
-display: flex;
-flex: 1;
+const AboutPage = styled.div`
+    height: 100vh;
+    width: 100%;
+    background-color: ${BackgroundColor.aboutBg};
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 `;
 
-const ProfilePicture = styled.div``;
+const AboutContent = styled.div`
+    margin-left: 13%;
+    margin-bottom: 2%;
+    line-height: 200%;
+`;
 
-const Content = styled.div``;
+const Title = styled.div`
+    font-family: "Hanken Grotesk", sans-serif;
+`;
 
+const TitleHeading = styled.h3`
+    font-size: 400%;
+`;
+
+const Content = styled.div`
+    text-align: justify;
+    font-size: 120%;
+`;
+
+const Buttons = styled.div`
+    margin-top: 8%;
+    display: flex;
+`;
+
+const StyledButton = styled(Button)`
+  background-color: ${ButtonColor.backgroundColor};
+  border: none;
+  color: ${TextColor.primaryWhite};
+  &&&:hover {
+    background-color: ${ButtonColor.backgroundColor}; 
+    color: ${TextColor.lightWhite};
+  }
+`;
+
+const ResumeButton = styled.div`
+  margin-left: 5%;
+`;
+
+const ProjectButton = styled.div`
+    margin-left: 8%;
+`;
+
+const ProfilePhoto = styled.div`
+    margin-left: 6%;
+    margin-right: 15%;
+`;
+
+const StyledImage = styled.img`
+    border-radius: 50%;
+    object-fit: cover;
+`;
+
+const ResumeAlertPopup = styled.div`
+  margin-top: 6%;
+`;

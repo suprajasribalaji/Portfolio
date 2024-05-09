@@ -1,178 +1,183 @@
-'use client';
+'use client'
 
+import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { NextPage } from "next";
-import { Button } from "antd";
-import React, { useState } from "react";
-import { RxDividerVertical } from "react-icons/rx";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import bgImage from "../public/images/bg-image.jpg";
+import HomeBgImg from "../public/images/home-bg-img.jpeg";
+import { Button } from "antd";
 import About from "./About";
-import Skill from "./Skill";
-import Project from "./Project";
-import Resume from "./Resume";
-import Contact from "./Contact";
-import { 
-  backgroundColor, 
-  text, 
-  linearGradient 
-} from "@/theme/color";
+import ExperienceAndEducation from "./ExperienceAndEducation";
+import SkillsAndProficiency from "./SkillsAndProficiency";
+import SampleWork from "./SampleWork";
+import ReachOut from "./ReachOut";
+import { getDownloadURL, ref } from 'firebase/storage';
+import storage from "@/app/firebase.config";
 
 const Home: NextPage = () => {
-  const [currentPage, setCurrentPage] = useState<string>("");
+  const aboutPageRef = useRef<HTMLDivElement>(null);
+  const reachOutPageRef = useRef<HTMLDivElement>(null);
+  const experienceAndEducationPageRef = useRef<HTMLDivElement>(null);
+  const skillsAndProficiencyPageRef = useRef<HTMLDivElement>(null);
+  const sampleWorkPageRef = useRef<HTMLDivElement>(null);
+  const [resumeURL, setResumeURL] = useState<string>('');
 
-  const handleOnClick = (actualPage: string): void => {
-    setCurrentPage(actualPage);
+  useEffect(() => {
+      getDownloadURL(ref(storage, 'suprajasrirb_resume.pdf'))
+      .then((url) => {
+          setResumeURL(url);
+          console.log('storage url::::  ', url);
+      })
+  }, []);
+  const handleKnowMoreClick = () => {
+    aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleReachOutClick = () => {
+    reachOutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeClick = () => {
+    experienceAndEducationPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeContinuationClick = () => {
+    skillsAndProficiencyPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleProjectClick = () => {
+    sampleWorkPageRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <HomeComponent>
-      <NavigationAndContent>
-        <BackgroundImage>
-          <Navigation>
-            <NavigationButton type="link" onClick={() => handleOnClick("About")}>
-              About
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Project")}>
-              Project
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Resume")}>
-              Resume
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Skill")}>
-              Skill
-            </NavigationButton>
-            <NavigationButton type="link" onClick={() => handleOnClick("Contact")}>
-              Contact
-            </NavigationButton>
-          </Navigation>
-          <Content>
-            <ContentIcon>
-              <RxDividerVertical/>
-            </ContentIcon>
-            <Introduction>
-              <Name>SUPRAJA SRI R B</Name>
-              <Bio>Enthusiastic developer</Bio>
-            </Introduction>
-          </Content>
-        </BackgroundImage>
-      </NavigationAndContent>
-      <AboutComponent>
-        <About />
-      </AboutComponent>
-      <SkillComponent>
-        <Skill />
-      </SkillComponent>
-      <ProjectComponent>
-        <Project />
-      </ProjectComponent>
-      <ResumeComponent>
-        <Resume />
-      </ResumeComponent>
-      <ContactComponent>
-        <Contact />
-      </ContactComponent>
-    </HomeComponent>
-  );
-};
+    <HomePage>
+      <BackgroundImage>
+        <Content>
+          <TitleAndSubtitle>
+            <Title>
+              SUPRAJA SRI R B
+            </Title>
+            <SubTitle>
+              Enthusiastic Developer
+            </SubTitle>
+          </TitleAndSubtitle>
+          <ActionButtons>
+            <KnowMoreButton>
+              <StyledButton type="link" shape="round" size="large" onClick={handleKnowMoreClick}><TextInButton>KNOW MORE</TextInButton></StyledButton>
+            </KnowMoreButton>
+            <ReachOutButton>
+              <StyledButton type="link" shape="round" size="large" onClick={handleReachOutClick}><TextInButton>REACH OUT</TextInButton></StyledButton>
+            </ReachOutButton>
+          </ActionButtons>
+        </Content>
+      </BackgroundImage>
+      <AboutPage ref={aboutPageRef}>
+        <About
+          handleResumeClick={handleResumeClick}
+          handleProjectClick={handleProjectClick}
+          resumeURL={resumeURL}
+        />
+      </AboutPage>
+      <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
+        <ExperienceAndEducation 
+          handleResumeContinuationClick={handleResumeContinuationClick}
+          resumeURL={resumeURL}
+        />
+      </ExperienceAndEducationPage>
+      <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
+        <SkillsAndProficiency 
+          handleProjectClick={handleProjectClick}
+          resumeURL={resumeURL}
+        />
+      </SkillsAndProficiencyPage>
+      <SampleWorkPage ref={sampleWorkPageRef}>
+        <SampleWork/>
+      </SampleWorkPage>
+      <ReachOutPage ref={reachOutPageRef}>
+        <ReachOut />
+      </ReachOutPage>
+    </HomePage>
+  )
+}
 
 export default Home;
 
-const HomeComponent = styled.div`
-    margin: 0;
-    padding: 0;
-`;
-
-const NavigationAndContent = styled.div`
-  background-color: ${backgroundColor.home};
-  height: 100vh;
+const HomePage = styled.div`
+  margin: 0;
+  padding: 0;
   width: 100%;
+  height: 100vh;
 `;
 
 const BackgroundImage = styled.div`
-  width: 96%;
-  height: 88vh;
-  left: 0px;
-  top: 0px;
-  background: linear-gradient(0deg, ${linearGradient.start}, ${linearGradient.end}),
-  url(${bgImage.src});
+  background: linear-gradient(0deg, ${LinearGradientColor.homeLG}, ${LinearGradientColor.homeLG}),
+  url(${HomeBgImg.src});
   background-size: cover;
-  border-radius: 0px 0px 100px 0px;
-`;
-
-const Navigation = styled.nav`
-  padding-left: 23%;
-  padding-top: 1.6%;
-`;
-
-const NavigationButton = styled(Button)`
-  &&& {
-    color: ${text.primaryWhite};
-    margin-right: 2.5rem;
-    font-size: 17px;
-    font-family: "Montserrat", sans-serif;
-  }
-  &&&:hover,
-  &&&:focus {
-    color: ${text.secondaryWhite};
-  }
+  width: 100%;
+  height: 100vh;
 `;
 
 const Content = styled.div`
-  color: ${text.primaryWhite};
-  position: absolute;
   display: flex;
-  flex: 1;
-  margin-top: 24%;
-  margin-left: 2%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  color: ${TextColor.primaryWhite};
 `;
 
-const ContentIcon = styled.div`
-  margin-top: 22%;
-  svg {
-    font-size: 460%;
+const TitleAndSubtitle = styled.div`
+  margin-bottom: 3%;
+`;
+
+const Title = styled.div`
+  font-weight: 600; 
+  font-size: 400%;
+  margin-top: 56%;
+`;
+
+const SubTitle = styled.div`
+  font-weight: 250;
+  color: ${TextColor.tertiaryWhite};
+  font-size: 180%;
+  margin-top: 4%;
+`;
+
+const ActionButtons = styled.div`
+  margin-top: 2%;
+  display: flex;
+  margin-right: 3%;
+`;
+
+const StyledButton = styled(Button)`
+  background-color: ${ButtonColor.backgroundColor};
+  border: none;
+  color: ${TextColor.primaryWhite};
+  &&&:hover {
+    background-color: ${ButtonColor.backgroundColor}; 
+    color: ${TextColor.lightWhite};
   }
 `;
 
-const Introduction = styled.div`
-  margin-top: 21%;
+const KnowMoreButton = styled.div`
+  margin-right: 5%;
 `;
 
-const Name = styled.div`
-  font-size: 190%;
+const ReachOutButton = styled.div`
+  margin-left: 5%;
 `;
 
-const Bio = styled.div`
-  color: ${text.secondaryWhite};
-  font-size: 110%;
-  margin-top: 6%;
+const TextInButton = styled.span`
+  font-size: 80%;
 `;
 
-const BaseStyledForAllComponent = styled.div`
-  height: 100vh;
-  width: 100%;
-  position absolute;
-`;
+const AboutPage = styled(HomePage)``;
 
-const ColoredBasedOnProps = styled(BaseStyledForAllComponent)`
-  background-color: ${props => props.color};
-`;
+const ExperienceAndEducationPage = styled(HomePage)``;
 
-const AboutComponent = styled(ColoredBasedOnProps)`
-  background-color: beige;
-`;
+const SkillsAndProficiencyPage = styled(HomePage)``;
 
-const SkillComponent = styled(ColoredBasedOnProps)`
-  background-color: gray;
-`;
+const SampleWorkPage = styled(HomePage)``;
 
-const ProjectComponent = styled(ColoredBasedOnProps)`
-  background-color: lightBlue;
-`;
-
-const ResumeComponent = styled(ColoredBasedOnProps)`
-  background-color: white;
-`;
-
-const ContactComponent = styled(ColoredBasedOnProps)`
-  background-color: lavender;
-`;
+const ReachOutPage = styled(HomePage)``;

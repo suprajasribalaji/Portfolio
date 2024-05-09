@@ -1,18 +1,23 @@
-export const linearGradient = {
-    start: '#00000099',
-    end: '#00000066',
-}
+export const LinearGradientColor = {
+    homeLG: '#343434B3',
+    expeduLG: '#535353CC',
+};
 
-export const text = {
-    primaryWhite : '#fff',
-    secondaryWhite : '#FFFFFFB3',
-}
+export const TextColor = {
+    primaryWhite: '#fff',
+    secondaryWhite: '#f6f6f6',
+    tertiaryWhite: '#f4f4f4',
+    lightWhite: '#FFFFFF66',
+    SemiLightWhite: '#FFFFFFD9',
+    
+};
 
-export const backgroundColor = {
-    home: '#000000E6',
-    about: '',
-    skill: '',
-    project: '',
-    resume: '',
-    contact: '',
+export const ButtonColor = {
+    backgroundColor: '#2e2e2e',
+};
+
+export const BackgroundColor = {
+    aboutBg: '#f6f6f6',
+    sampleWorkBg: '#343434',
+    reachOutBg: '#000000',
 }
