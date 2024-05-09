@@ -1,6 +1,10 @@
 module.exports = {
-    presets: [
-      ["@babel/preset-env", { targets: { node: "current" } }],
-      "@babel/preset-react"
-    ]
-  };
+  experimental: {
+    forceSwcTransforms: true,
+  },
+  presets: [
+    "next/babel",
+    ["@babel/preset-env", { targets: { node: "current" } }],
+    "@babel/preset-react"
+  ]
+};

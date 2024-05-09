@@ -4,10 +4,10 @@ import { MailOutlined, LinkedinFilled, GithubOutlined } from "@ant-design/icons"
 import reachOutSideImg from "../public/images/reach-out.jpeg";
 import { BackgroundColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
-import React from "react";
+import { NextPage } from "next";
 
 
-const ReachOut: React.FC = () => {
+const ReachOut: NextPage = () => {
     return (
         <ReachOutPage>
             <SideImage />

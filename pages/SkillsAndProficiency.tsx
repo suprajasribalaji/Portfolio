@@ -2,14 +2,14 @@ import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import styled from "styled-components";
 import SkillsProficiencyBgImg from "../public/images/skillprof-bg-img.jpeg";
 import { Button, Progress } from "antd";
-import React from "react";
+import { NextPage } from "next";
 
 type Props = {
-    handleProjectClick: () => void,
-    resumeURL: string,
+    handleProjectClick: () => void;
+    resumeURL: string;
 }
 
-const SkillsAndProficiency: React.FC<Props> = ({ handleProjectClick, resumeURL }) => {
+const SkillsAndProficiency: NextPage<Props> = ({ handleProjectClick, resumeURL }) => {
 
     const handleDownloadButton = () => {
         console.log(resumeURL, ' ------------');

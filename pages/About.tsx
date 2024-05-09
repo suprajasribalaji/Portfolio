@@ -1,19 +1,20 @@
 'use client'
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Alert, Button, Space } from "antd";
 import { BackgroundColor, ButtonColor, TextColor } from "@/theme/color";
 import ProfilePicture from "../public/images/myImage.jpg";
 import styled from "styled-components";
+import { NextPage } from "next";
 
 
 type Props = {
-    handleResumeClick: () => void,
-    handleProjectClick: () => void,
-    resumeURL: string,
+    handleResumeClick: () => void;
+    handleProjectClick: () => void;
+    resumeURL: string;
 }
 
-const About: React.FC<Props> = ({ handleResumeClick, handleProjectClick, resumeURL }) => {
+const About: NextPage<Props> = ({ handleResumeClick, handleProjectClick, resumeURL }) => {
     const [isResumeClicked, setIsResumeClicked] = useState<boolean>(false);
 
     const handleDownloadButton = () => {

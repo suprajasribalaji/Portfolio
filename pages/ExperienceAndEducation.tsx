@@ -6,8 +6,8 @@ import React from "react";
 
 
 type Props = {
-    handleResumeContinuationClick: () => void,
-    resumeURL: string,
+    handleResumeContinuationClick: () => void;
+    resumeURL: string;
 }
 
 const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick, resumeURL }) => {

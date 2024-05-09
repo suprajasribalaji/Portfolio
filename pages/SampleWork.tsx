@@ -1,8 +1,8 @@
 import { BackgroundColor, TextColor } from "@/theme/color";
-import React from "react";
 import { Card, Carousel } from "antd";
 import styled from "styled-components";
 import Image from "next/image";
+import { NextPage } from "next";
 
 const { Meta } = Card;
 
@@ -45,7 +45,7 @@ const projectDetails = [
   },
 ];
 
-const SampleWork: React.FC = () => {
+const SampleWork: NextPage = () => {
   return (
     <SampleWorkPage>
       <SampleWorkContent>
