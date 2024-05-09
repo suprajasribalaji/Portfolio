@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ExpEduBackgroundImage from "../public/images/expedu-bg-img.jpeg";
 import { ButtonColor, LinearGradientColor, TextColor } from "@/theme/color";
 import { Button } from "antd";
-import React from "react";
+import { NextPage } from "next";
 
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
     resumeURL: string;
 }
 
-const ExperienceAndEducation: React.FC<Props> = ({ handleResumeContinuationClick, resumeURL }) => {
+const ExperienceAndEducation: NextPage<Props> = ({ handleResumeContinuationClick, resumeURL }) => {
 
     const handleDownloadButton = () => {
         console.log(resumeURL, ' ------------');
